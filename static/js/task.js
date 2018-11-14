@@ -184,12 +184,13 @@ var preloadImages = {
 //Randomization of robber color & lambda  -> In level 1 & 2
 var robberLambda = [0,1,2];
 var shuffledRobberLambda =  jsPsych.randomization.repeat(robberLambda, 1);
+var robberColor = [0,1,2];
 
 var levelOne = {
 
   type: "AAALevelOne",
-  shuffledLambda: shuffledRobberLambda
-
+  shuffledLambda: shuffledRobberLambda,
+  robberColor: robberColor[2]
 };
 
 var levelTwoA = {
@@ -975,7 +976,10 @@ var timeline = []; //welcome_message, entrySurvey_block,instruction_messageLevel
   //  timeline = timeline.concat(comprehensionTestBlock1);
   
  // timeline.push(level1Start);
-    timeline.push(rewardInformation);
+    timeline.push(levelOne);
+    timeline.push(levelOne);
+    timeline.push(levelOne);
+    timeline.push(levelOne);
     //timeline.push(rewardCalc);
    
 
@@ -1012,7 +1016,7 @@ jsPsych.init({
     },
     on_finish: function() {
 
-      console.log(isRobberCaught);
+      console.log(isRobberCaught);        // Debugging variables.
       console.log(psiturk.taskdata.get('bonus'));
 
     //save data
