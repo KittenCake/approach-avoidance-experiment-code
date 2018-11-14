@@ -1,0 +1,36 @@
+[HIT Configuration]
+title = Psychology Experiment (~60 minutes)
+description = Avoid being caught from the robber! A psychological experiment consisting of a computer game and a set of questions. Please disable adblockers before continuing.
+amt_keywords = perception, psychology, experiment, fear, conditioning, university, switzerland, study
+lifetime = 24
+us_only = false
+approve_requirement = 95
+contact_email_on_error = bachlab.participants@gmail.com
+ad_group = jsPsych psiTurk Approach avoidcance
+psiturk_keywords = Web Approach Avoidance
+organization_name = BachLab University of Zurich
+browser_exclude_rule = MSIE, mobile, tablet
+allow_repeats = true
+
+[Database Parameters: mysql://pmisala:bachlab@approach-avoidance-test6/approachAvoidance ]
+database_url = sqlite:///participants.db
+table_name = approachAvoidance
+
+[Server Parameters]
+host = 0.0.0.0
+port = 22362
+cutoff_time = 60
+logfile = server.log
+loglevel = 2
+debug = true
+login_username = root
+login_pw = root
+threads = auto
+
+[Task Parameters]
+experiment_code_version = 1.0
+num_conds = 1
+num_counters = 1
+
+[Shell Parameters]
+launch_in_sandbox_mode = true

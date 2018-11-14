@@ -1,0 +1,106 @@
+<!doctype html>
+<!-- 
+  The consent.html displays the text of your IRB-approved
+  consent form.  Even if you are not required to provide
+  a consent form, it is helpful to use this form to 
+  describe what people can do if an error comes up, etc...
+
+-->
+<html>
+    <head>
+        <title>Psychology Experiment - Informed Consent Form</title>
+        <link rel=stylesheet href="/static/css/bootstrap.min.css" type="text/css">
+        <link rel=stylesheet href="/static/css/style.css" type="text/css">
+        <script type="text/javascript">
+            function onexit() {
+              self.close(); // no harm, no foul here
+            }
+        </script>
+    </head>
+    <body>
+        <div id="container-consent">
+            <div id="consent">
+                <h1 style="color:white;"> We need your consent to proceed</h1>
+                <hr>
+                <div class="legal well">
+                    <p>
+                   <center> <h3><font color="teal">You have been invited to take part in a research study named "Approach Avoidance Experiment"</font></h3></center>
+                    </p><p>
+                  <h4> <b> <font color="teal">1. Aims:</font> </b></h4></p><p>
+
+                       <blockquote> We seek to test decision making under time pressure, and how it relates to personality characteristics.</blockquote>
+
+                   </p><p><h4> <b><font color="teal">2. Selection of participants:</font> </b> </h4> </p><p>
+
+                     <blockquote>Healthy people of all ages can take part.</blockquote>
+
+                    </p><p> <h4><b><font color="teal">3. General information:</font></b></h4>  </p><p>
+
+                     <blockquote> The project consists of a set of questions, and a computer game. The project complies with legal regulations in Switzerland. The competent ethics committee has approved the project (BASEC 2016-00068). </blockquote>
+
+                    </p><p><h4><b><font color="teal"> 4. Benefit: </font></b></h4> </p><p>
+                    
+                    <blockquote> You will receive a monetary compensation. There is no other personal benefit from taking part in this project. Your data will help psychological science.</blockquote>
+
+                   </p><p> <h4><b><font color="teal"> 5. Rights: </font></b></h4> </p><p>
+
+                       <blockquote> Your participance is voluntary. You can stop participation at any time without stating any reasons. In this case, Swiss law requires us to keep the information you have already given. If you have questions about this project, please email bachlab.participants@gmail.com</blockquote>
+
+                  </p><p> <h4><b><font color="teal">  6. Risks:</font></b></h4></p><p>
+
+                        <blockquote>There is no known risk of taking part in this project.</blockquote>
+
+                  </p><p><h4><b><font color="teal">  7. Data protection:</font></b></h4></p><p>
+
+                     <blockquote> We will ask you for personal information in this project. Once the data are transferred to the project's servers in Switzerland, only members of the project team can see all information. Representatives of regulatory bodies for ethics in research can gain access to the project information, and they are all bound to confidentiality. Any information used outside the project team will be fully anonymised and not be identifiable. We retain the right to publish fully anonymised data.</blockquote>
+
+                   </p><p><h4><b><font color="teal"> 8. Source of funding:</font> </b></h4></p><p>
+
+                      <blockquote> The project is funded by the University of Zurich</blockquote>
+
+                  </p><p><h4><b> <font color="teal"> 9. Contact email: </font></b></h4></p><p>
+
+                      <blockquote> bachlab.participants@gmail.com </blockquote>
+
+                </p><p><h4><b> <font color="teal">Consent:</font> </b> </h4></p><p>
+
+                    <ul>
+                   </p><p> <blockquote><li>I have been informed about aim, background and potential risk of the project, and I had the         opportunity to contact the project team with questions.</li> </p><p> 
+
+                    </p><p> <li>I take part voluntarily, and I accept the given information. I had enough time to make a decision whether or not to take part. </li></p><p> 
+
+                   </p><p>  <li>I agree that regulatory bodies for ethics in research in Switzerland may gain confidential access to the study data.</li></p><p> 
+                    
+                   </p><p>  <li>I agree that anonymised data may be published.</li></p><p> 
+
+                   </p><p> <li>I can interrupt my study participation any time. Any data acquired until then will be used by the project team.</li></blockquote></p><p> 
+                    </ul>
+
+                    </p>
+
+                    <button type="button" class="btn btn-default btn-sm" onClick="window.print();">
+                    <span class="glyphicon glyphicon-print"></span> Print a copy of this
+                    </button>
+                </div>
+
+                <hr>
+                <h4>Do you understand and consent to these terms?</h4>
+                <br>
+
+                <center>
+                    <button type="button" class="btn btn-primary btn-lg" onClick="window.location='/exp?hitId={{ hitid }}&assignmentId={{ assignmentid }}&workerId={{ workerid }}'">
+                    <span class="glyphicon glyphicon-ok"></span> I agree 
+                    </button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-danger btn-lg" onClick="onexit()">
+                    <span class="glyphicon glyphicon-ban-circle"></span> No thanks, I do not want to do this HIT
+                    </button>
+                </center>
+
+            </div>
+        </div>
+    </body>
+</html>
+
