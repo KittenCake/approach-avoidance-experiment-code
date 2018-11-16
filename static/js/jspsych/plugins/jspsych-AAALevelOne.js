@@ -86,9 +86,9 @@ trial.currentTime += trial.timeAbsendVariable;
 
  trial.robberTimeouts = [];
 
- var ARobberExp  = Prob.exponential(1.0536);  
- var BRobberExp = Prob.exponential(0); 
- var CRobberExp = Prob.exponential(2.2314);  
+ var ARobberExp  = Prob.exponential(1.0536); //1.0536
+ var BRobberExp = Prob.exponential(3.5667);  //3.5667
+ var CRobberExp = Prob.exponential(2.2314);   //2.2314
 
 
 trial.currentARobberTime = 0;

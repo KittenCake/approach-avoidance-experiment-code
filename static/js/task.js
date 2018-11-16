@@ -186,24 +186,72 @@ var robberLambda = [0,1,2];
 var shuffledRobberLambda =  jsPsych.randomization.repeat(robberLambda, 1);
 var robberColor = [0,1,2];
 
-var levelOne = {
+// different variations of levels A-C allows you to define the exact number of robber of a certain color -> with lambda being randomized. 
+
+//levelOne catch diamonds Color A-C
+var levelOneA = {
+
+  type: "AAALevelOne",
+  shuffledLambda: shuffledRobberLambda,
+  robberColor: robberColor[0]
+};
+
+var levelOneB = {
+
+  type: "AAALevelOne",
+  shuffledLambda: shuffledRobberLambda,
+  robberColor: robberColor[1]
+};
+
+var levelOneC = {
 
   type: "AAALevelOne",
   shuffledLambda: shuffledRobberLambda,
   robberColor: robberColor[2]
 };
 
+//levelTwo catch diamonds Color A-C
 var levelTwoA = {
 
   type: "AAALevelTwoA",
-  shuffledLambda: shuffledRobberLambda
+  shuffledLambda: shuffledRobberLambda,
+  robberColor: robberColor[0]
 };
 
 var levelTwoB = {
 
-  type: "AAALevelTwoB",
-  shuffledLambda: shuffledRobberLambda
+  type: "AAALevelTwoA",
+  shuffledLambda: shuffledRobberLambda,
+  robberColor: robberColor[1]
+};
 
+var levelTwoC = {
+
+  type: "AAALevelTwoA",
+  shuffledLambda: shuffledRobberLambda,
+  robberColor: robberColor[2]
+};
+
+// levelTwo catch the robber Color A-C
+var levelTwoBA = {
+
+  type: "AAALevelTwoB",
+  shuffledLambda: shuffledRobberLambda,
+  robberColor: robberColor[0]
+};
+
+var levelTwoBB = {
+
+  type: "AAALevelTwoB",
+  shuffledLambda: shuffledRobberLambda,
+  robberColor: robberColor[1]
+};
+
+var levelTwoBC = {
+
+  type: "AAALevelTwoB",
+  shuffledLambda: shuffledRobberLambda,
+  robberColor: robberColor[2]
 };
 
 // comprehension tests
@@ -829,40 +877,42 @@ return qns;
 
 
 // Randomizations
-  
+    
 // adding leveOne 
-var levelOneListA = [];     // part 1
+var levelOneList = [];     // part 1
 
 for(i = 0; i <= 14; i++){      // 15 trials
 
-  levelOneListA.push(levelOne);
+  levelOneList.push(levelOneA);
+  levelOneList.push(levelOneB);
+  levelOneList.push(levelOneC);
 };
 
-var levelOneListB = [];     // part 2
 
-for(i = 0; i <= 14; i++){     // 15 trials
+var levelOneList = jsPsych.randomization.repeat(levelOneList,1);
 
-  levelOneListB.push(levelOne);
-};
-
-var levelOneListC = [];     // part 3
-
-for(i = 0; i <= 14; i++){     //15 trials
-
-  levelOneListC.push(levelOne);
-};
+  var levelOneListA = levelOneList.slice(0,15);
+  var levelOneListB = levelOneList.slice(15,30);
+  var levelOneListC = levelOneList.slice(30,45);
 
 
 // Randomization of level 2 -> 1/3 LevelA 3/4 LevelB 
 var levelTwoRandom = [];
-for(i = 0; i <= 3; i++){  // 4 trials
+for(i = 0; i <= 0; i++){  // 4 trials
 
   levelTwoRandom.push(levelTwoA);
-};      
-for(i = 0; i <= 11; i++){  // 12 
-
+  levelTwoRandom.push(levelTwoA);
   levelTwoRandom.push(levelTwoB);
-};                             
+  levelTwoRandom.push(levelTwoC);
+};      
+
+for(i = 0; i <= 3; i++){  // 12 
+
+  levelTwoRandom.push(levelTwoBA);
+  levelTwoRandom.push(levelTwoBB);
+  levelTwoRandom.push(levelTwoBC);
+}; 
+
 var shuffledLevelTwoRandom = jsPsych.randomization.repeat(levelTwoRandom,1);    // 
 
 var subsetLevelTwoRandomA = shuffledLevelTwoRandom.slice(0,8); // sliced array from 0 - 8
@@ -976,25 +1026,21 @@ var timeline = []; //welcome_message, entrySurvey_block,instruction_messageLevel
   //  timeline = timeline.concat(comprehensionTestBlock1);
   
  // timeline.push(level1Start);
-    timeline.push(levelOne);
-    timeline.push(levelOne);
-    timeline.push(levelOne);
-    timeline.push(levelOne);
-    //timeline.push(rewardCalc);
+  //timeline.push(rewardCalc);
    
 
-  //  timeline = timeline.concat(levelOneListA);
+   // timeline = timeline.concat(levelOneListA);
    // timeline.push(break_messageLvlOneA);
    // timeline = timeline.concat(levelOneListB);
   //  timeline.push(break_messageLvlOneC);
-  //  timeline = timeline.concat(levelOneListC);
+ //   timeline = timeline.concat(levelOneListC);
 
   //  timeline = timeline.concat(instruction_messageLevelTwo);
   //  timeline = timeline.concat(comprehensionTestBlock2);
   //  timeline.push(level2Start);
-  //  timeline = timeline.concat(subsetLevelTwoRandomA);         
+    timeline = timeline.concat(subsetLevelTwoRandomA);         
   //  timeline.push(break_messageLvlTwo);
- //   timeline = timeline.concat(subsetLevelTwoRandomB); 
+    timeline = timeline.concat(subsetLevelTwoRandomB); 
  //   timeline.push(instruction_postTest);
  //   timeline = timeline.concat(shuffledSurveyPosttest);
 

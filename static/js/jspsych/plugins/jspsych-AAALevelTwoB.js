@@ -26,6 +26,7 @@ trial = jsPsych.pluginAPI.evaluateFunctionParameters(trial);
   trial.stringifyLambda = ["λ = 1.0536", "λ = 3.5667","λ = 2.2314"];  
   trial.stringifyRColor = ["azure", "yellow","purple"];
   trial.shuffledLambda = trial.shuffledLambda;        // randomized lambda array "parameter"
+  trial.robberColor = trial.robberColor;         // robberColor array "parameter"
   trial.numberOfTokkens = 6;
   trial.tokkenCount = 0;
 
@@ -146,11 +147,12 @@ for (i = 0; i <= 100; i++){
 
 //functions:
 
-function robberColor(){                         // selects a random grid color
+function robberColor(){                         // can be modified to give a random color / here takes a parameter from task.js
 
-  var robberColor = [0,1,2];
 
-  robberColor = robberColor[Math.floor(Math.random() * robberColor.length)];
+  var robberColor = trial.robberColor; //0,1,2
+
+  //robberColor = robberColor[Math.floor(Math.random() * robberColor.length)];
     
     return robberColor;
 }
