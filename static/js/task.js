@@ -944,7 +944,7 @@ function saveData(filename, filedata){
 
 // reward Variables
 
-var chosenTrialLvl1 = 3;
+var chosenTrialLvl1;
 var nrWonTokensLvl1;
 var chosenTrialLvl2;
 var isRobberCaught;
@@ -957,7 +957,7 @@ var rewardCalculation = function() {             // function for calculating the
     //levelOne  -- choose a random trial among all level one's
     var allCatchDiamonds = jsPsych.data.getTrialsOfType("AAALevelOne");  
 
-    randomNrOne = Math.floor(Math.random() * ((allCatchDiamonds.length -1) - 0 + 1)) + 0; // election of random trial nr.
+    var randomNrOne = Math.floor(Math.random() * ((allCatchDiamonds.length -1) - 0 + 1)) + 0; // election of random trial nr.
     var isCaught = Object.values(allCatchDiamonds[randomNrOne])[6];
     var nrWonTok = Object.values(allCatchDiamonds[randomNrOne])[4];
  
@@ -975,7 +975,7 @@ var rewardCalculation = function() {             // function for calculating the
     //levelTwoB  -- choose a random trial among all level twoB's
     var allCatchRobber = jsPsych.data.getTrialsOfType("AAALevelTwoB");
 
-    randomNrB = Math.floor(Math.random() * ((allCatchRobber.length -1) - 0 + 1)) + 0;  // election of random trial nr.
+    var randomNrB = Math.floor(Math.random() * ((allCatchRobber.length -1) - 0 + 1)) + 0;  // election of random trial nr.
     var caughtRobber = Object.values(allCatchRobber[randomNrB])[6];
   
     chosenTrialLvl2 = randomNrB;
@@ -985,19 +985,12 @@ var rewardCalculation = function() {             // function for calculating the
 
       totalReward += 1.5;  // Bonus for level 2B for + 1.5$ if robber was caught in that round
     }
-    console.log("Info Lvl1 " + allCatchDiamonds);
-    console.log(randomNrOne);
-    console.log(nrWonTok);
-    console.log("Info Lvl2 " + allCatchRobber.length);
-    console.log(randomNrB);
-    console.log(caughtRobber);
-
+   
     jsPsych.data.addProperties({earnedReward: totalReward});
     psiturk.taskdata.set('bonus', totalReward - 10);
 
     totalRewardWon = totalReward;
  };
-
 
 
 var rewardCalc = {
@@ -1008,14 +1001,26 @@ var rewardCalc = {
 var rewardInformation = {
 
     type: "text",
-    text: "What follows now is the calculation of your reward! There were 49 'Catch diamonds' rounds together in level 1 and 2 and 15 'Catch the robber' rounds in level 2. <BR/> <BR/>" +
-        "As 'Catch diamonds', round nr."  + chosenTrialLvl1 +  "was randomly elected. <BR/> <BR/> In this chosen round you collected " +
-         nrWonTokensLvl1 + " tokens. Which gives you a bonus of " + nrWonTokensLvl1*1.5 + "$. <BR/> <BR/> As for the 'Catch the robber' rounds, round nr. " + chosenTrialLvl2 + ", was randomly elected. <BR/> <BR/>" +
-         "In this chosen round you blabla to be worked out" +
-        "In that way you earned a total of " + totalRewardWon + "$ in this experiment."
+    text: function(){ return ("<b> What follows now is the calculation of your reward!</b>  <BR/><BR/>Summed up there are 49 possible 'catch diamonds' rounds from level 1 (with 45 rounds) and level 2 (with 4 rounds) as well as 12 possible 'catch the robber' rounds from level 2 only.<BR/> <BR/>" +
+        "From those rounds one '<b>catch diamonds</b>' and one '<b>catch the robber</b>' round will be selected randomly.<BR/> <BR/>" + 
+          "As '<b>catch diamonds</b>' round <b>"  + (chosenTrialLvl1+1) +  "</b> was randomly selected. <BR/> <BR/>In this chosen round you collected <b>" +
+         nrWonTokensLvl1 + "</b> tokens. This gives you a bonus of<b> " + (nrWonTokensLvl1*1.5) + "$.</b>.<BR/> <BR/> As for 'catch the robber', round <b> " + (chosenTrialLvl2+1) + "</b> , was randomly selected.<BR/> <BR/>" +
+         "In this selected round you " + isItCaught() +
+        "<BR/> <BR/>In this way you earned a total of <b> " + totalRewardWon + "$</b> in this experiment.")}
+      };
+
+// heleper function to determine whether the robber was caught or not
+var isItCaught = function(){
+
+  if(isRobberCaught == "true"){
+
+    return ("managed to catch the robber, which gives you an extra <b>1.5$</b>");
+  }
+    else{
+
+      return("did not manage to catch the robber, which gives you <b>no extra bonus</b>. ");
+    }
 };
-
-
 
 
 //MAIN --> defining experiment structure
@@ -1024,10 +1029,16 @@ var timeline = []; //welcome_message, entrySurvey_block,instruction_messageLevel
  
 
   //  timeline = timeline.concat(comprehensionTestBlock1);
-  
- // timeline.push(level1Start);
-  //timeline.push(rewardCalc);
-   
+     timeline.push(levelOneA);
+     timeline.push(levelOneB);
+     timeline.push(levelOneC);
+     timeline.push(levelTwoBA);
+     timeline.push(levelTwoBB);
+     timeline.push(levelTwoBC);
+
+     //timeline.push(level1Start);
+     timeline.push(rewardCalc);
+     timeline.push(rewardInformation);
 
    // timeline = timeline.concat(levelOneListA);
    // timeline.push(break_messageLvlOneA);
@@ -1038,9 +1049,9 @@ var timeline = []; //welcome_message, entrySurvey_block,instruction_messageLevel
   //  timeline = timeline.concat(instruction_messageLevelTwo);
   //  timeline = timeline.concat(comprehensionTestBlock2);
   //  timeline.push(level2Start);
-    timeline = timeline.concat(subsetLevelTwoRandomA);         
+   // timeline = timeline.concat(subsetLevelTwoRandomA);         
   //  timeline.push(break_messageLvlTwo);
-    timeline = timeline.concat(subsetLevelTwoRandomB); 
+   // timeline = timeline.concat(subsetLevelTwoRandomB); 
  //   timeline.push(instruction_postTest);
  //   timeline = timeline.concat(shuffledSurveyPosttest);
 
@@ -1062,9 +1073,7 @@ jsPsych.init({
     },
     on_finish: function() {
 
-      console.log(isRobberCaught);        // Debugging variables.
-      console.log(psiturk.taskdata.get('bonus'));
-
+      
     //save data
     psiturk.saveData({
 
