@@ -278,5 +278,3 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/node,linux,macos,python,windows
 \.psiturk_history
-
-participants\.db
