@@ -886,36 +886,68 @@ var anxiety1_scale = [ "Not at all","Somewhat","Moderately so","Very much so"];
     };  
 
 // Taylor Manifest Anxiety Scale (TMAS)
-var  anxiety1_qn =[' 1) I feel calm.',
-        '2) I feel secure.',
-        '3) I am tense.',
-        '4) I feel strained.',
-        '5) I feel at ease.',
-        '6) I feel upset.',
+var  anxiety_TMAS =[
+        '1) I do not tire quickly.',
+        '2) I am troubled by attacks of nausea.',
+        '3) I believe I am no more nervous than most others.',
+        '4) I have very few headaches.',
+        '5) I work under a great deal of tension.',
+        '6) I cannot keep my mind on one thing.',
         '7) I am presently worrying over possible misfortunes.',
-        '8) I feel satisfied.',
-        "9) I feel frightened. ",
-        '10) I feel comfortable.',
-        '11) I feel self-confident.',
-        '12) I feel nervous.',
-        '13) I am jittery.',
-        '14) I feel indecisive.',
-        '15) I am relaxed.',
-        '16) I feel content.',
-        '17) I am worried.',
-        "18) I feel confused.",
-        '19) I feel steady.',
-        '20) I feel pleasant.'];
+        '8) I worry over money and business.',
+        "9) I frequently notice my hand shakes when I try to do something.",
+        '10) I blush no more often than others.',
+        '11) I have diarrhea once a month or more.',
+        '12) I worry quite a bit over possible misfortunes.',
+        '13) I practically never blush.',
+        '14) I am often afraid that I am going to blush.',
+        '15) I have nightmares every few nights.',
+        '16) My hands and feet are usually warm.',
+        '17) I sweat very easily even on cool days.',
+        "18) Sometimes when embarrassed, I break out in a sweat.",
+        '19) I hardly ever notice my heart pounding and I am seldom short of breath.',
+        '20) I feel hungry almost all the time.',
+        '21) I am very seldom troubled by constipation.',
+        '22) I have a great deal of stomach trouble.',
+        '23) I have had periods in which I lost sleep over worry.',
+        '24) My sleep is fitful and disturbed.',
+        '25) I dream frequently about things that are best kept to myself.',
+        '26) I am easily embarrassed.',
+        '27) I am more sensitive than most other people.',
+        '28) I frequently find myself worrying about something.',
+        '29) I wish I could be as happy as others seem to be.',
+        '30) I am usually calm and not easily upset.',
+        '31) I cry easily.',
+        '32) I feel anxiety about something or someone almost all the time.',
+        '33) I am happy most of the time.',
+        '34) It makes me nervous to have to wait.',
+        '35) I have periods of such great restlessness that I cannot sit long I a chair.',
+        '36) Sometimes I become so excited that I find it hard to get to sleep.',
+        '37) I have sometimes felt that difficulties were piling up so high that I could not overcome them.',
+        '38) I must admit that I have at times been worried beyond reason over something that really did not matter.',
+        '39) I have very few fears compared to my friends.',
+        '40) I have been afraid of things or people that I know could not hurt me.',
+        '41) I certainly feel useless at times.',
+        '42) I find it hard to keep my mind on a task or job.',
+        '43) I am usually self-conscious.',
+        '44) I am inclined to take things hard.',
+        '45) I am a high-strung person.',
+        '46) Life is a strain for me much of the time.',
+        '47) At times I think I am no good at all.',
+        '48) I am certainly lacking in self-confidence.',
+        '49) I sometimes feel that I am about to go to pieces.',
+        '50) I shrink from facing crisis or difficulty.',
+        '51) I am entirely self-confident.'];
 
-var anxiety1_scale = [ "Not at all","Somewhat","Moderately so","Very much so"];
+var anxietyTMAS_scale = [ "True","False"];
 
-    var genanxiety1 =      
+    var anxietyTMAS =      
     { type: "survey-multi-choiceOriginal",
-    questions: anxiety1_qn,
-    options: [anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale , anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale,anxiety1_scale,anxiety1_scale,anxiety1_scale],
-    required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
-    preamble: ['<strong>Read each statement and select the appropriate response to indicate how you feel right now, that is, at this very moment. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
-    data:{label: 'anxiety-Y1', trialType: 'quest'}
+    questions: anxiety_TMAS,
+    options: [anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale],
+    required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
+    preamble: ['<strong>Read each statement and select the appropriate response.</strong>'],
+    data:{label: 'anxiety-TMAS', trialType: 'quest'}
     };  
     
     
@@ -923,7 +955,7 @@ var anxiety1_scale = [ "Not at all","Somewhat","Moderately so","Very much so"];
 qns.push(begin_qns);
 
 //, ocir, schizo, zungdep, lebsocial, icariq, genanxiety, apathy, eat, alcoholadd
-var questlist = [genanxiety2, genanxiety1, bis, ocir, schizo, zungdep, lebsocial, icariq, genanxiety2, genanxiety1, apathy, eat, alcoholadd];
+var questlist = [anxietyTMAS, bis, ocir, schizo, zungdep, lebsocial, icariq, genanxiety2, genanxiety1, apathy, eat, alcoholadd];
 var shufflequestlist  =  jsPsych.randomization.shuffle(questlist);
 
 //PUSH THE QUESTIONNAIRES
