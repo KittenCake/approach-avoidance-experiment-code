@@ -884,6 +884,39 @@ var anxiety1_scale = [ "Not at all","Somewhat","Moderately so","Very much so"];
     preamble: ['<strong>Read each statement and select the appropriate response to indicate how you feel right now, that is, at this very moment. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
     data:{label: 'anxiety-Y1', trialType: 'quest'}
     };  
+
+// Taylor Manifest Anxiety Scale (TMAS)
+var  anxiety1_qn =[' 1) I feel calm.',
+        '2) I feel secure.',
+        '3) I am tense.',
+        '4) I feel strained.',
+        '5) I feel at ease.',
+        '6) I feel upset.',
+        '7) I am presently worrying over possible misfortunes.',
+        '8) I feel satisfied.',
+        "9) I feel frightened. ",
+        '10) I feel comfortable.',
+        '11) I feel self-confident.',
+        '12) I feel nervous.',
+        '13) I am jittery.',
+        '14) I feel indecisive.',
+        '15) I am relaxed.',
+        '16) I feel content.',
+        '17) I am worried.',
+        "18) I feel confused.",
+        '19) I feel steady.',
+        '20) I feel pleasant.'];
+
+var anxiety1_scale = [ "Not at all","Somewhat","Moderately so","Very much so"];
+
+    var genanxiety1 =      
+    { type: "survey-multi-choiceOriginal",
+    questions: anxiety1_qn,
+    options: [anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale , anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale,anxiety1_scale,anxiety1_scale,anxiety1_scale],
+    required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
+    preamble: ['<strong>Read each statement and select the appropriate response to indicate how you feel right now, that is, at this very moment. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
+    data:{label: 'anxiety-Y1', trialType: 'quest'}
+    };  
     
     
 //PUSH QUESTIONNAIRE INSTRUCTIONS
