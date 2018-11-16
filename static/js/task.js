@@ -819,8 +819,8 @@ var eat_scale = [ "Always","Usually","Often","Sometimes","Rarely","Never"];
     
     
     
-    //ANXIETY PLUGIN
-var  anxiety_qn =[' 1) I feel pleasant.',
+//STAI Form Y2 - ANXIETY PLUGIN
+var  anxiety2_qn =[' 1) I feel pleasant.',
         '2) I feel nervous and restless.',
         '3) I feel satisfied with myself.',
         '4) I wish I could be as happy as others seem to be. ',
@@ -841,15 +841,48 @@ var  anxiety_qn =[' 1) I feel pleasant.',
         '19) I am a steady person.',
         '20) I get in a state of tension or turmoil as I think over my recent concerns and interests.'];
 
-var anxiety_scale = [ "Almost never","Sometimes","Often","Almost always"];
+var anxiety2_scale = [ "Almost never","Sometimes","Often","Almost always"];
 
-    var genanxiety =      
+  var genanxiety2 =      
     { type: "survey-multi-choiceOriginal",
-    questions: anxiety_qn,
-    options: [anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale , anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale,anxiety_scale,anxiety_scale,anxiety_scale],
+    questions: anxiety2_qn,
+    options: [anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale , anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale,anxiety2_scale,anxiety2_scale,anxiety2_scale],
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     preamble: ['<strong>Read each statement and select the appropriate response to indicate how you feel right now, that is, at this very moment. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
-    data:{label: 'anxiety', trialType: 'quest'}
+    data:{label: 'anxiety-Y2', trialType: 'quest'}
+    };
+
+//STAI Form Y1 - ANXIETY PLUGIN
+var  anxiety1_qn =[' 1) I feel calm.',
+        '2) I feel secure.',
+        '3) I am tense.',
+        '4) I feel strained.',
+        '5) I feel at ease.',
+        '6) I feel upset.',
+        '7) I am presently worrying over possible misfortunes.',
+        '8) I feel satisfied.',
+        "9) I feel frightened. ",
+        '10) I feel comfortable.',
+        '11) I feel self-confident.',
+        '12) I feel nervous.',
+        '13) I am jittery.',
+        '14) I feel indecisive.',
+        '15) I am relaxed.',
+        '16) I feel content.',
+        '17) I am worried.',
+        "18) I feel confused.",
+        '19) I feel steady.',
+        '20) I feel pleasant.'];
+
+var anxiety1_scale = [ "Not at all","Somewhat","Moderately so","Very much so"];
+
+    var genanxiety1 =      
+    { type: "survey-multi-choiceOriginal",
+    questions: anxiety1_qn,
+    options: [anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale , anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale,anxiety1_scale,anxiety1_scale,anxiety1_scale],
+    required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
+    preamble: ['<strong>Read each statement and select the appropriate response to indicate how you feel right now, that is, at this very moment. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
+    data:{label: 'anxiety-Y1', trialType: 'quest'}
     };  
     
     
@@ -857,8 +890,8 @@ var anxiety_scale = [ "Almost never","Sometimes","Often","Almost always"];
 qns.push(begin_qns);
 
 //, ocir, schizo, zungdep, lebsocial, icariq, genanxiety, apathy, eat, alcoholadd
-var questlist = [bis, ocir, schizo, zungdep, lebsocial, icariq, genanxiety, apathy, eat, alcoholadd];
-var shufflequestlist  = jsPsych.randomization.shuffle(questlist);
+var questlist = [genanxiety2, genanxiety1, bis, ocir, schizo, zungdep, lebsocial, icariq, genanxiety2, genanxiety1, apathy, eat, alcoholadd];
+var shufflequestlist  =  jsPsych.randomization.shuffle(questlist);
 
 //PUSH THE QUESTIONNAIRES
 for(var i = 0; i < shufflequestlist.length; i++)
@@ -1023,11 +1056,11 @@ var rewardInformation = {
 var timeline = []; //welcome_message, entrySurvey_block,instruction_messageLevelOne
  
 
-  //  timeline = timeline.concat(comprehensionTestBlock1);
+  //timeline = timeline.concat(comprehensionTestBlock1);
   
- // timeline.push(level1Start);
+  // timeline.push(level1Start);
   //timeline.push(rewardCalc);
-   
+    
 
    // timeline = timeline.concat(levelOneListA);
    // timeline.push(break_messageLvlOneA);
@@ -1038,13 +1071,13 @@ var timeline = []; //welcome_message, entrySurvey_block,instruction_messageLevel
   //  timeline = timeline.concat(instruction_messageLevelTwo);
   //  timeline = timeline.concat(comprehensionTestBlock2);
   //  timeline.push(level2Start);
-    timeline = timeline.concat(subsetLevelTwoRandomA);         
+  //  timeline = timeline.concat(subsetLevelTwoRandomA);         
   //  timeline.push(break_messageLvlTwo);
-    timeline = timeline.concat(subsetLevelTwoRandomB); 
+  //  timeline = timeline.concat(subsetLevelTwoRandomB); 
  //   timeline.push(instruction_postTest);
  //   timeline = timeline.concat(shuffledSurveyPosttest);
 
- //   timeline = timeline.concat(questionnaires);
+    timeline = timeline.concat(questionnaires);
 
 
 
