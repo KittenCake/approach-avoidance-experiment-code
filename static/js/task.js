@@ -893,7 +893,6 @@ var  anxiety_TMAS =[
         '4) I have very few headaches.',
         '5) I work under a great deal of tension.',
         '6) I cannot keep my mind on one thing.',
-        
         '7) I worry over money and business.',
         "8) I frequently notice my hand shakes when I try to do something.",
         '9) I blush no more often than others.',
@@ -949,14 +948,34 @@ var anxietyTMAS_scale = [ "True","False"];
     preamble: ['<strong>Read each statement and select the appropriate response.</strong>'],
     data:{label: 'anxiety-TMAS', trialType: 'quest'}
     };  
+
+
+// CADS questionnare (daringness subscale) - Items 3/6/9/11/50
+var  daringness_CADS =[
+        '1) Are you daring and adventurous?',
+        '2) Do you like rough games and sports?',
+        '3) Do you enjoy doing things that are risky or dangerous?',
+        '4) Do you like things that are exciting and loud?',
+        '5) Are you brave?'];
+
+var daringnessCADS_scale = [ "Not at all","Just a little","Pretty much/pretty often","Very much/very often"];
+
+    var daringnessCADS =      
+    { type: "survey-multi-choiceOriginal",
+    questions: daringness_CADS,
+    options: [daringnessCADS_scale,daringnessCADS_scale,daringnessCADS_scale,daringnessCADS_scale,daringnessCADS_scale],
+    required: [true,true,true,true,true],
+    preamble: ['<strong>When you answer these questions, please think about the last 12 months and tick the box that you feel best describes you.</strong>'],
+    data:{label: 'daringness-CADS', trialType: 'quest'}
+    };  
     
     
 //PUSH QUESTIONNAIRE INSTRUCTIONS
 qns.push(begin_qns);
 
 //, ocir, schizo, zungdep, lebsocial, icariq, genanxiety, apathy, eat, alcoholadd
-var questlist = [anxietyTMAS, bis, ocir, schizo, zungdep, lebsocial, icariq, genanxiety2, genanxiety1, apathy, eat, alcoholadd];
-var shufflequestlist  =  jsPsych.randomization.shuffle(questlist);
+var questlist = [daringnessCADS, anxietyTMAS, bis, ocir, schizo, zungdep, lebsocial, icariq, genanxiety2, genanxiety1, apathy, eat, alcoholadd];
+var shufflequestlist  = jsPsych.randomization.shuffle(questlist);
 
 //PUSH THE QUESTIONNAIRES
 for(var i = 0; i < shufflequestlist.length; i++)
