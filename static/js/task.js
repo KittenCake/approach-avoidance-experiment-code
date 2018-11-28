@@ -819,8 +819,8 @@ var eat_scale = [ "Always","Usually","Often","Sometimes","Rarely","Never"];
     
     
     
-    //ANXIETY PLUGIN
-var  anxiety_qn =[' 1) I feel pleasant.',
+//STAI Form Y2 - ANXIETY PLUGIN
+var  anxiety2_qn =[' 1) I feel pleasant.',
         '2) I feel nervous and restless.',
         '3) I feel satisfied with myself.',
         '4) I wish I could be as happy as others seem to be. ',
@@ -841,15 +841,132 @@ var  anxiety_qn =[' 1) I feel pleasant.',
         '19) I am a steady person.',
         '20) I get in a state of tension or turmoil as I think over my recent concerns and interests.'];
 
-var anxiety_scale = [ "Almost never","Sometimes","Often","Almost always"];
+var anxiety2_scale = [ "Almost never","Sometimes","Often","Almost always"];
 
-    var genanxiety =      
+  var genanxiety2 =      
     { type: "survey-multi-choiceOriginal",
-    questions: anxiety_qn,
-    options: [anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale , anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale, anxiety_scale,anxiety_scale,anxiety_scale,anxiety_scale],
+    questions: anxiety2_qn,
+    options: [anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale , anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale,anxiety2_scale,anxiety2_scale,anxiety2_scale],
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     preamble: ['<strong>Read each statement and select the appropriate response to indicate how you feel right now, that is, at this very moment. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
-    data:{label: 'anxiety', trialType: 'quest'}
+    data:{label: 'anxiety-Y2', trialType: 'quest'}
+    };
+
+//STAI Form Y1 - ANXIETY PLUGIN
+var  anxiety1_qn =[' 1) I feel calm.',
+        '2) I feel secure.',
+        '3) I am tense.',
+        '4) I feel strained.',
+        '5) I feel at ease.',
+        '6) I feel upset.',
+        '7) I am presently worrying over possible misfortunes.',
+        '8) I feel satisfied.',
+        "9) I feel frightened. ",
+        '10) I feel comfortable.',
+        '11) I feel self-confident.',
+        '12) I feel nervous.',
+        '13) I am jittery.',
+        '14) I feel indecisive.',
+        '15) I am relaxed.',
+        '16) I feel content.',
+        '17) I am worried.',
+        "18) I feel confused.",
+        '19) I feel steady.',
+        '20) I feel pleasant.'];
+
+var anxiety1_scale = [ "Not at all","Somewhat","Moderately so","Very much so"];
+
+    var genanxiety1 =      
+    { type: "survey-multi-choiceOriginal",
+    questions: anxiety1_qn,
+    options: [anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale , anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale,anxiety1_scale,anxiety1_scale,anxiety1_scale],
+    required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
+    preamble: ['<strong>Read each statement and select the appropriate response to indicate how you feel right now, that is, at this very moment. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
+    data:{label: 'anxiety-Y1', trialType: 'quest'}
+    };  
+
+// Taylor Manifest Anxiety Scale (TMAS)
+var  anxiety_TMAS =[
+        '1) I do not tire quickly.',
+        '2) I am troubled by attacks of nausea.',
+        '3) I believe I am no more nervous than most others.',
+        '4) I have very few headaches.',
+        '5) I work under a great deal of tension.',
+        '6) I cannot keep my mind on one thing.',
+        '7) I worry over money and business.',
+        "8) I frequently notice my hand shakes when I try to do something.",
+        '9) I blush no more often than others.',
+        '10) I have diarrhea once a month or more.',
+        '11) I worry quite a bit over possible misfortunes.',
+        '12) I practically never blush.',
+        '13) I am often afraid that I am going to blush.',
+        '14) I have nightmares every few nights.',
+        '15) My hands and feet are usually warm.',
+        '16) I sweat very easily even on cool days.',
+        "17) Sometimes when embarrassed, I break out in a sweat.",
+        '18) I hardly ever notice my heart pounding and I am seldom short of breath.',
+        '29) I feel hungry almost all the time.',
+        '20) I am very seldom troubled by constipation.',
+        '21) I have a great deal of stomach trouble.',
+        '22) I have had periods in which I lost sleep over worry.',
+        '23) My sleep is fitful and disturbed.',
+        '24) I dream frequently about things that are best kept to myself.',
+        '25) I am easily embarrassed.',
+        '26) I am more sensitive than most other people.',
+        '27) I frequently find myself worrying about something.',
+        '28) I wish I could be as happy as others seem to be.',
+        '29) I am usually calm and not easily upset.',
+        '30) I cry easily.',
+        '31) I feel anxiety about something or someone almost all the time.',
+        '32) I am happy most of the time.',
+        '33) It makes me nervous to have to wait.',
+        '34) I have periods of such great restlessness that I cannot sit long I a chair.',
+        '35) Sometimes I become so excited that I find it hard to get to sleep.',
+        '36) I have sometimes felt that difficulties were piling up so high that I could not overcome them.',
+        '37) I must admit that I have at times been worried beyond reason over something that really did not matter.',
+        '38) I have very few fears compared to my friends.',
+        '39) I have been afraid of things or people that I know could not hurt me.',
+        '40) I certainly feel useless at times.',
+        '41) I find it hard to keep my mind on a task or job.',
+        '42) I am usually self-conscious.',
+        '43) I am inclined to take things hard.',
+        '44) I am a high-strung person.',
+        '45) Life is a strain for me much of the time.',
+        '46) At times I think I am no good at all.',
+        '47) I am certainly lacking in self-confidence.',
+        '48) I sometimes feel that I am about to go to pieces.',
+        '49) I shrink from facing crisis or difficulty.',
+        '50) I am entirely self-confident.'];
+
+var anxietyTMAS_scale = [ "True","False"];
+
+    var anxietyTMAS =      
+    { type: "survey-multi-choiceOriginal",
+    questions: anxiety_TMAS,
+    options: [anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale],
+    required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
+    preamble: ['<strong>Read each statement and select the appropriate response.</strong>'],
+    data:{label: 'anxiety-TMAS', trialType: 'quest'}
+    };  
+
+
+// CADS questionnare (daringness subscale) - Items 3/6/9/11/50
+var  daringness_CADS =[
+        '1) Are you daring and adventurous?',
+        '2) Do you like rough games and sports?',
+        '3) Do you enjoy doing things that are risky or dangerous?',
+        '4) Do you like things that are exciting and loud?',
+        '5) Are you brave?'];
+
+var daringnessCADS_scale = [ "Not at all","Just a little","Pretty much/pretty often","Very much/very often"];
+
+    var daringnessCADS =      
+    { type: "survey-multi-choiceOriginal",
+    questions: daringness_CADS,
+    options: [daringnessCADS_scale,daringnessCADS_scale,daringnessCADS_scale,daringnessCADS_scale,daringnessCADS_scale],
+    required: [true,true,true,true,true],
+    preamble: ['<strong>When you answer these questions, please think about the last 12 months and tick the box that you feel best describes you.</strong>'],
+    data:{label: 'daringness-CADS', trialType: 'quest'}
     };  
     
     
@@ -857,7 +974,7 @@ var anxiety_scale = [ "Almost never","Sometimes","Often","Almost always"];
 qns.push(begin_qns);
 
 //, ocir, schizo, zungdep, lebsocial, icariq, genanxiety, apathy, eat, alcoholadd
-var questlist = [bis, ocir, schizo, zungdep, lebsocial, icariq, genanxiety, apathy, eat, alcoholadd];
+var questlist = [daringnessCADS, anxietyTMAS, bis, ocir, schizo, zungdep, lebsocial, icariq, genanxiety2, genanxiety1, apathy, eat, alcoholadd];
 var shufflequestlist  = jsPsych.randomization.shuffle(questlist);
 
 //PUSH THE QUESTIONNAIRES
@@ -1055,7 +1172,7 @@ var timeline = []; //welcome_message, entrySurvey_block,instruction_messageLevel
  //   timeline.push(instruction_postTest);
  //   timeline = timeline.concat(shuffledSurveyPosttest);
 
- //   timeline = timeline.concat(questionnaires);
+    timeline = timeline.concat(questionnaires);
 
 
 
