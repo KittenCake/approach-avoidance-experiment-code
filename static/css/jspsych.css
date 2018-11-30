@@ -225,11 +225,12 @@ input[type="text"] {
 /* PLUGIN: jspsych-survey-text */
 
 .jspsych-survey-text {
-  margin: 0.25em 0em;
+  margin: 2.0em 0em;
 }
 .jspsych-survey-text-question {
   margin: 2em 0em;
 }
+
 
 /* PLUGIN: jspsych-survey-likert */
 

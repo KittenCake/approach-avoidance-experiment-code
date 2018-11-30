@@ -9,7 +9,25 @@ JsPsych Test setup for AAA
 
  */
 
+<<<<<<< Updated upstream
   
+=======
+//function getGitHash(){      // simple php file to retrieve git hash
+ // jQuery.support.cors = true;
+//  $.ajax({
+
+ //    url : '/getgithash.php',
+ //    type : 'GET',
+ //    success : function (data) {
+    //    console.log (data); // Here, you need to use response by PHP file.
+ //    },
+ //    error : function () {
+    //    console.log ('error');
+ //    }
+ //  });
+   // };
+
+>>>>>>> Stashed changes
 
 // Experiment parameter - Test blocks
 
@@ -373,6 +391,14 @@ var comprTest2 =
 var comprehensionTestBlock1 = [comprTest1, if_comprTfail];
 var comprehensionTestBlock2 = [comprTest2, if_comprTfail2];
 
+
+// participant feedback
+var feedbackParticipant = {
+  type: 'survey-text',
+  rows: [15],
+  columns: [90],
+  questions: ["(feedback is optional) <BR/> <BR/> In order to keep track of possible bugs and to improve the experience, <BR/> we kindly ask you to give us feedback. Feel free to share your opinion with us on our experiment :).<BR/>"],
+};
 
 
 
@@ -1048,17 +1074,6 @@ jsPsych.data.addProperties({ subjectId: subjectId});
 
 
 
-// function to save subject data locally at server side with a php file. (shouldnt be used with psiturk)
-function saveData(filename, filedata){
-   $.ajax({
-      type:'post',
-      cache: false,
-      url: 'simpleSaveData.php',                        // this is the path to the above PHP script on server side
-      data: {filename: filename, filedata: filedata}    
-   });
-}
-
-
 // reward Variables
 
 var chosenTrialLvl1;
@@ -1104,7 +1119,7 @@ var rewardCalculation = function() {             // function for calculating the
     }
    
     jsPsych.data.addProperties({earnedReward: totalReward});
-    psiturk.taskdata.set('bonus', totalReward - 10);
+    psiturk.taskdata.set('bonus', totalReward - 10);  // only the bonus without participation fees
 
     totalRewardWon = totalReward;
  };
@@ -1142,38 +1157,30 @@ var isItCaught = function(){
 
 //MAIN --> defining experiment structure
 
-var timeline = []; //welcome_message, entrySurvey_block,instruction_messageLevelOne
+var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne]; 
  
 
-  //  timeline = timeline.concat(comprehensionTestBlock1);
-     timeline.push(levelOneA);
-     timeline.push(levelOneB);
-     timeline.push(levelOneC);
-     timeline.push(levelTwoBA);
-     timeline.push(levelTwoBB);
-     timeline.push(levelTwoBC);
+     timeline = timeline.concat(comprehensionTestBlock1);
+     
+     timeline = timeline.concat(levelOneListA);
+     timeline.push(break_messageLvlOneA);
+     timeline = timeline.concat(levelOneListB);
+     timeline.push(break_messageLvlOneC);
+     timeline = timeline.concat(levelOneListC);
 
-     //timeline.push(level1Start);
-     timeline.push(rewardCalc);
-     timeline.push(rewardInformation);
-
-   // timeline = timeline.concat(levelOneListA);
-   // timeline.push(break_messageLvlOneA);
-   // timeline = timeline.concat(levelOneListB);
-  //  timeline.push(break_messageLvlOneC);
- //   timeline = timeline.concat(levelOneListC);
-
-  //  timeline = timeline.concat(instruction_messageLevelTwo);
-  //  timeline = timeline.concat(comprehensionTestBlock2);
-  //  timeline.push(level2Start);
-   // timeline = timeline.concat(subsetLevelTwoRandomA);         
-  //  timeline.push(break_messageLvlTwo);
-   // timeline = timeline.concat(subsetLevelTwoRandomB); 
- //   timeline.push(instruction_postTest);
- //   timeline = timeline.concat(shuffledSurveyPosttest);
+     timeline = timeline.concat(instruction_messageLevelTwo);
+     timeline = timeline.concat(comprehensionTestBlock2);
+     timeline.push(level2Start);
+     timeline = timeline.concat(subsetLevelTwoRandomA);         
+     timeline.push(break_messageLvlTwo);
+     timeline = timeline.concat(subsetLevelTwoRandomB); 
+     timeline.push(instruction_postTest);
+     timeline = timeline.concat(shuffledSurveyPosttest);
 
     timeline = timeline.concat(questionnaires);
-
+    timeline.push(rewardCalc);
+    timeline.push(rewardInformation);
+    timeline.push(feedbackParticipant);
 
 
 
@@ -1190,7 +1197,8 @@ jsPsych.init({
     },
     on_finish: function() {
 
-      
+    psiturk.taskdata.set('codeversion', "96a9cdd302b30f0843b000b9780db302290bd451"); // add commit hash of current version 
+
     //save data
     psiturk.saveData({
 
