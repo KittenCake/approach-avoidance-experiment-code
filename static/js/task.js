@@ -9,9 +9,9 @@ JsPsych Test setup for AAA
 
  */
 
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
   
-=======
+//=======
 //function getGitHash(){      // simple php file to retrieve git hash
  // jQuery.support.cors = true;
 //  $.ajax({
@@ -27,7 +27,7 @@ JsPsych Test setup for AAA
  //  });
    // };
 
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
 
 // Experiment parameter - Test blocks
 
@@ -62,11 +62,11 @@ var instruction_messageLevelOne = {
     type: 'instructions',
     pages: [ 'Please read following instructions carefully. <BR/> Now you will be collecting diamonds in an easy computer game. Your task is to win as many diamonds as possible - in each round of the game.',
 
-    'In each round you will see a playing board with 4 fields. The green rectangle - that is you. You are in a "safe square" - it is dark gray. Right across from you sits a sleeping "robber". There are three different types of robbers in this game. They are all gray - but the frame color is different for each of them: dark-yellow, purple or azure-blue (like here). These "robbers" are differently dangerous. It is important  that you learn how the robbers differ from each other - and that you adapt your strategy to it. <BR/> <BR/> <img src="/static/images/instructionsLevel1(1).jpeg"></img>',
+    'In each round you will see a playing board with 4 fields. The green triangle - that is you. You are in a "safe square" - it is dark gray. Right across from you sits a sleeping "robber". There are three different types of robbers in this game. They are all gray - but the frame color is different for each of them: yellow, purple or cyan-blue (like here). These "robbers" are differently dangerous. It is important  that you learn how the robbers differ from each other - and that you adapt your strategy to it. <BR/> <BR/> <img src="/static/images/instructionsLevel1(1).jpeg"></img>',
 
     'From time to time yellow diamonds pop up in the left or right white empty squares. The diamonds disappear after some time. To collect a token, move to the diamond and back onto the "safe square" by pressing the arrow keys of your keyboard (right/left). You can only move left and right, and not reach the field where the robber sleeps.',
 
-    'In the following picture you see a round with the dark-yellow robber. Just now a diamond appeared. <BR/> <BR/> <img src="/static/images/instructionsLevel1(2).jpeg"></img>', 
+    'In the following picture you see a round with the yellow robber. Just now a diamond appeared. <BR/> <BR/> <img src="/static/images/instructionsLevel1(2).jpeg"></img>', 
 
     'Once you collected it, it appears on the left upper part of the screen <BR/> <BR/> <img src="/static/images/instructionsLevel1(3).jpeg"></img>',
 
@@ -78,9 +78,9 @@ var instruction_messageLevelOne = {
 
     'Try to avoid this. Remember: your task is to complete each round with as many diamonds as possible. If you get attacked, you do not have any diamonds for this round. If you want to prevent that, just stay in the safe square and do not catch new diamonds. With time you will get a feeling for how fast diamonds are appearing and disappearing. And what is most important, a feeling for how often the robbers will awake and attack you.',
 
-    'By the way: whether you collect a diamond or not - the next diamond will not appear any faster or slower. Therefore you cannot shorten the experiment with your strategy. <BR/> <BR/> At the end of the experiment one "<b>Catch diamonds</b>" round is elected randomly. <BR/> For each diamond you collected in this chosen round, you will receive an extra $1.5 on top of the $10 participation fee. <BR/> <BR/> If you are really unlucky and you did not collect any diamonds in that elected round, you will not receive any extra amount of money. To prevent that, keep in mind to not get caught by the robber.',
+    'By the way: whether you collect a diamond or not - the next diamond will not appear any faster or slower. Therefore you cannot shorten the experiment with your strategy. <BR/> <BR/> At the end of the experiment one "<b>Catch diamonds</b>" round is elected randomly. <BR/> For each diamond you collected in this chosen round, you will receive an extra $2.5 on top of the $15 participation payment. <BR/> <BR/> If you are really unlucky and you did not collect any diamonds in that elected round, you will not receive any extra amount of money. To prevent that, keep in mind to not get caught by the robber.',
 
-    '<BR/> <BR/> What follows now is a short comprehension test please, Click next to start'],
+    '<BR/> <BR/> What follows now is a short comprehension test please, Click next to start.'],
 
     show_clickable_nav: true // experiment instructions 
 };
@@ -101,7 +101,7 @@ var instruction_messageLevelTwo = {
 
       'If the robber is currently awake, he turns red. <b> This shows you that you caught him.</b> The round is over instantly, <b> and you can win extra money from this round.<BR/> <img src="/static/images/instructionsLevel2(4).jpeg"></img>',
 
-      'In each round you can try to expose the robber 6 times. The round is over when you expose the robber or when all diamonds have appeared. If you try to catch the robber 6 times without success, the up key turns inactive.<BR/> At the end of the experiment a "<b>Catch the robber</b>" round gets elected randomly. If you managed to expose the robber in this elected round, you will win an extra $1.5 on top of the earnings from the elected "<b> Collect diamonds</b>" round. Keep in mind to try to expose the robber exactly when you think he is awake. Be aware that you do not see in advance whether the robber is awake or not. <BR/> <BR/> What follows now is a short comprehension test please, Click next to start <BR/>'],
+      'In each round you can try to expose the robber 6 times. The round is over when you expose the robber or when all diamonds have appeared. If you try to catch the robber 6 times without success, the up key turns inactive.<BR/> At the end of the experiment a "<b>Catch the robber</b>" round gets elected randomly. If you managed to expose the robber in this elected round, you will win an extra $2.5 on top of the earnings from the elected "<b> Collect diamonds</b>" round. Keep in mind to try to expose the robber exactly when you think he is awake. Be aware that you do not see in advance whether the robber is awake or not. <BR/> <BR/> What follows now is a short comprehension test please, Click next to start <BR/>'],
   
   show_clickable_nav: true
 };
@@ -874,7 +874,7 @@ var anxiety2_scale = [ "Almost never","Sometimes","Often","Almost always"];
     questions: anxiety2_qn,
     options: [anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale , anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale,anxiety2_scale,anxiety2_scale,anxiety2_scale],
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
-    preamble: ['<strong>Read each statement and select the appropriate response to indicate how you feel right now, that is, at this very moment. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
+    preamble: ['<strong>Read each statement and select the appropriate response to indicate how you generally feel, that is, at this very moment. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
     data:{label: 'anxiety-Y2', trialType: 'quest'}
     };
 
@@ -1084,7 +1084,7 @@ var totalRewardWon;
 
 var rewardCalculation = function() {             // function for calculating the reward of a participant
 
-    var totalReward = 10;      // participation fee: 10$
+    var totalReward = 15;      // participation payment: 15$
 
     //levelOne  -- choose a random trial among all level one's
     var allCatchDiamonds = jsPsych.data.getTrialsOfType("AAALevelOne");  
@@ -1099,8 +1099,8 @@ var rewardCalculation = function() {             // function for calculating the
 
     if(isCaught == "false"){
 
-      wonToken = parseInt(nrWonTok);  // + bonus for every caught diamond default 1.5$ per nrWonTok
-      totalReward += wonToken*1.5;
+      wonToken = parseInt(nrWonTok);  // + bonus for every caught diamond default 2.5$ per nrWonTok
+      totalReward += wonToken*2.5;
     }
 
 
@@ -1115,13 +1115,16 @@ var rewardCalculation = function() {             // function for calculating the
 
     if(caughtRobber == "true"){
 
-      totalReward += 1.5;  // Bonus for level 2B for + 1.5$ if robber was caught in that round
+      totalReward += 2.5;  // Bonus for level 2B for + 2.5$ if robber was caught in that round
     }
    
-    jsPsych.data.addProperties({earnedReward: totalReward});
-    psiturk.taskdata.set('bonus', totalReward - 10);  // only the bonus without participation fees
 
     totalRewardWon = totalReward;
+
+    jsPsych.data.addProperties({earnedReward: totalReward});
+    psiturk.taskdata.set('bonus', totalRewardWon - totalReward);  // only the bonus without participation payment --> Total reward
+
+    
  };
 
 
@@ -1136,7 +1139,7 @@ var rewardInformation = {
     text: function(){ return ("<b> What follows now is the calculation of your reward!</b>  <BR/><BR/>Summed up there are 49 possible 'catch diamonds' rounds from level 1 (with 45 rounds) and level 2 (with 4 rounds) as well as 12 possible 'catch the robber' rounds from level 2 only.<BR/> <BR/>" +
         "From those rounds one '<b>catch diamonds</b>' and one '<b>catch the robber</b>' round will be selected randomly.<BR/> <BR/>" + 
           "As '<b>catch diamonds</b>' round <b>"  + (chosenTrialLvl1+1) +  "</b> was randomly selected. <BR/> <BR/>In this chosen round you collected <b>" +
-         nrWonTokensLvl1 + "</b> tokens. This gives you a bonus of<b> " + (nrWonTokensLvl1*1.5) + "$.</b>.<BR/> <BR/> As for 'catch the robber', round <b> " + (chosenTrialLvl2+1) + "</b> , was randomly selected.<BR/> <BR/>" +
+         nrWonTokensLvl1 + "</b> tokens. This gives you a bonus of<b> " + (nrWonTokensLvl1*2.5) + "$.</b>.<BR/> <BR/> As for 'catch the robber', round <b> " + (chosenTrialLvl2+1) + "</b> , was randomly selected.<BR/> <BR/>" +
          "In this selected round you " + isItCaught() +
         "<BR/> <BR/>In this way you earned a total of <b> " + totalRewardWon + "$</b> in this experiment.")}
       };
@@ -1146,7 +1149,7 @@ var isItCaught = function(){
 
   if(isRobberCaught == "true"){
 
-    return ("managed to catch the robber, which gives you an extra <b>1.5$</b>");
+    return ("managed to catch the robber, which gives you an extra <b>2.5$</b>");
   }
     else{
 
@@ -1161,7 +1164,7 @@ var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne];
  
 
      timeline = timeline.concat(comprehensionTestBlock1);
-     
+     timeline.push(level1Start);
      timeline = timeline.concat(levelOneListA);
      timeline.push(break_messageLvlOneA);
      timeline = timeline.concat(levelOneListB);
@@ -1197,7 +1200,7 @@ jsPsych.init({
     },
     on_finish: function() {
 
-    psiturk.taskdata.set('codeversion', "96a9cdd302b30f0843b000b9780db302290bd451"); // add commit hash of current version 
+    psiturk.taskdata.set('codeversion', de62006e57969afc76d9cf44f5b76d770787f93d); // add commit hash of current version 
 
     //save data
     psiturk.saveData({

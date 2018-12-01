@@ -1,6 +1,6 @@
 [HIT Configuration]
-title = Psychology Experiment (~60 minutes)
-description = Avoid being caught from the robber! A psychological experiment consisting of a computer game and a set of questions. Please disable adblockers before continuing.
+title = Psychology Experiment (~90 minutes | 14$/hr)
+description =  A psychological experiment consisting of a computer game and a set of questionnaires. Please disable ad-blockers before continuing. (14$/hr on average)
 amt_keywords = perception, psychology, experiment, fear, conditioning, university, switzerland, study
 lifetime = 24
 us_only = false
