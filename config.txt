@@ -10,10 +10,10 @@ ad_group = jsPsych psiTurk Approach avoidcance
 psiturk_keywords = Web Approach Avoidance
 organization_name = BachLab University of Zurich
 browser_exclude_rule = MSIE, mobile, tablet
-allow_repeats = true
+allow_repeats = false
 
-[Database Parameters: mysql://pmisala:bachlab@approach-avoidance-test6/approachAvoidance ]
-database_url = sqlite:///participants.db
+[Database Parameters: mysql://pmisala:bachlab@approach-avoidance-test6/approachAvoidance /debugging ]
+database_url = sqlite:///participants.db 
 table_name = approachAvoidance
 
 [Server Parameters]
