@@ -1199,7 +1199,7 @@ jsPsych.init({
     },
     on_finish: function() {
 
-    psiturk.taskdata.set('codeversion', "de62006e57969afc76d9cf44f5b76d770787f93d"); // add commit hash of current version 
+    psiturk.taskdata.set('codeversion', "65b612e3b1ed1edc8eaa60d2f9f1ae3954f324cb"); // add commit hash of current version 
 
     //save data
     psiturk.saveData({

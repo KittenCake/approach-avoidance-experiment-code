@@ -12,8 +12,8 @@ organization_name = BachLab University of Zurich
 browser_exclude_rule = MSIE, mobile, tablet
 allow_repeats = false
 
-[Database Parameters: mysql://pmisala:bachlab@approach-avoidance-test6/approachAvoidance /debugging ]
-database_url = sqlite:///participants.db 
+[Database Parameters: sqlite:///participants.db /debugging db ]
+database_url = mysql://pmisala:5Tbp2YgvXsNW@approach-avoidance-test6/approachAvoidance
 table_name = approachAvoidance
 
 [Server Parameters]
