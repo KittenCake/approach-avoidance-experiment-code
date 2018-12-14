@@ -1,4 +1,4 @@
-[HIT Configuration]
+[HIT Configuration - Pilot code version: 1.0] 
 title = Psychology Experiment (~90 minutes | 14$/hr)
 description =  A psychological experiment consisting of a computer game and a set of questionnaires. Please disable ad-blockers before continuing. (14$/hr on average)
 amt_keywords = perception, psychology, experiment, fear, conditioning, university, switzerland, study

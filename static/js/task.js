@@ -874,7 +874,7 @@ var anxiety2_scale = [ "Almost never","Sometimes","Often","Almost always"];
     questions: anxiety2_qn,
     options: [anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale , anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale,anxiety2_scale,anxiety2_scale,anxiety2_scale],
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
-    preamble: ['<strong>Read each statement and select the appropriate response to indicate how you generally feel, that is, at this very moment. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
+    preamble: ['<strong>Read each statement and select the appropriate response to indicate how you generally feel. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
     data:{label: 'anxiety-Y2', trialType: 'quest'}
     };
 
