@@ -7,32 +7,6 @@ Version: 2.0.0
 
 JsPsych Test setup for AAA
 
- */
-
-//<<<<<<< Updated upstream
-  
-//=======
-//function getGitHash(){      // simple php file to retrieve git hash
- // jQuery.support.cors = true;
-//  $.ajax({
-
- //    url : '/getgithash.php',
- //    type : 'GET',
- //    success : function (data) {
-    //    console.log (data); // Here, you need to use response by PHP file.
- //    },
- //    error : function () {
-    //    console.log ('error');
- //    }
- //  });
-   // };
-
-//>>>>>>> Stashed changes
-
-// Experiment parameter - Test blocks
-
-
-
 
 /* load psiturk */
 var psiturk = new PsiTurk(uniqueId, adServerLoc, mode);
