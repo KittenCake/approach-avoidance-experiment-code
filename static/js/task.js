@@ -1096,8 +1096,7 @@ var rewardCalculation = function() {             // function for calculating the
     totalRewardWon = totalReward;
 
     jsPsych.data.addProperties({earnedReward: totalReward});
-    psiturk.taskdata.set('bonus', totalRewardWon - totalReward);  // only the bonus without participation payment --> Total reward
-
+    psiturk.recordUnstructuredData('bonus', totalRewardWon - totalReward);  // only the bonus without participation payment, fetched by custom compute_bonus 
     
  };
 
@@ -1134,9 +1133,12 @@ var isItCaught = function(){
 
 //MAIN --> defining experiment structure
 
-var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne]; 
+var timeline = []; //welcome_message, entrySurvey_block,instruction_messageLevelOne
  
-
+    
+      timeline.push(levelOneA);
+  
+    /*
      timeline = timeline.concat(comprehensionTestBlock1);
      timeline.push(level1Start);
      timeline = timeline.concat(levelOneListA);
@@ -1158,6 +1160,8 @@ var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne];
      timeline.push(rewardCalc);
      timeline.push(rewardInformation);
      timeline.push(feedbackParticipant);
+    */
+
 
 
 jsPsych.init({
@@ -1173,14 +1177,18 @@ jsPsych.init({
     },
     on_finish: function() {
 
-    psiturk.taskdata.set('codeversion', "65b612e3b1ed1edc8eaa60d2f9f1ae3954f324cb"); // add commit hash of current version 
 
     //save data
     psiturk.saveData({
 
     success: function() { 
       // function to run if the data is saved
-     psiturk.completeHIT();
+
+       psiturk.computeBonus('compute_bonus', function() { 
+
+            psiturk.completeHIT(); }); // when finished saving compute bonus...quit
+
+     
    },
     error: function() { 
       // function to run if there was an error
