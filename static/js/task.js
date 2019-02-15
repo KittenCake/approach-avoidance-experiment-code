@@ -18,7 +18,10 @@ var welcome_message = {
     type: "instructions",
     pages: ["Welcome to the Approach Avoidance Experiment, press next to start the experiment"],
 
-    show_clickable_nav: true
+    show_clickable_nav: true,
+     on_finish: function(){
+        jsPsych.setProgressBar(0.01); 
+    }
 };
 
 var entrySurvey_block = {        // unique id for participants can be created whilst saving file to databank
@@ -27,64 +30,76 @@ var entrySurvey_block = {        // unique id for participants can be created wh
     questions: ["How old are you?","What is your gender?"],
     options: [["placeholder"],["placeholder"]],
     required: [true,true],
-    horizontal: [false, false]
+    horizontal: [false, false],
+    on_finish: function(){
+        jsPsych.setProgressBar(0.01); 
+    }
 };
 
 
 var instruction_messageLevelOne = {
 
     type: 'instructions',
-    pages: [ 'Please read following instructions carefully. <BR/> Now you will be collecting diamonds in an easy computer game. Your task is to win as many diamonds as possible - in each round of the game.',
+    pages: [ 'Please read following instructions carefully. <BR/> Now you will be collecting tokens in an easy computer game. Your task is to win as many tokens as possible - in each round of the game.',
 
-    'In each round you will see a playing board with 4 fields. The green triangle - that is you. You are in a "safe square" - it is dark gray. Right across from you sits a sleeping "robber". There are three different types of robbers in this game. They are all gray - but the frame color is different for each of them: yellow, purple or cyan-blue (like here). These "robbers" are differently dangerous. It is important  that you learn how the robbers differ from each other - and that you adapt your strategy to it. <BR/> <BR/> <img src="/static/images/instructionsLevel1(1).jpeg"></img>',
+    'In each round you will see a playing board with 4 fields. The green triangle - that is you. You are in a "safe square" - it is dark gray and you cant be caught by the robber in it. Right across from you sits a sleeping "robber". There are three different types of robbers in this game. They are all gray - but the frame color is different for each of them: yellow, purple or cyan-blue (like here). These "robbers" are differently dangerous. It is important  that you learn how the robbers differ from each other - and that you adapt your strategy to it. <BR/> <BR/> <img src="/static/images/instructionsLevel1(1).jpeg"></img>',
 
-    'From time to time yellow diamonds pop up in the left or right white empty squares. The diamonds disappear after some time. To collect a token, move to the diamond and back onto the "safe square" by pressing the arrow keys of your keyboard (right/left). You can only move left and right, and not reach the field where the robber sleeps.',
+    'From time to time yellow tokens pop up in the left or right white empty squares. The tokens disappear after some time. To collect a token, move to the token and back onto the "safe square" by pressing the arrow keys of your keyboard (right/left). You can only move left and right, and not reach the field where the robber sleeps.',
 
-    'In the following picture you see a round with the yellow robber. Just now a diamond appeared. <BR/> <BR/> <img src="/static/images/instructionsLevel1(2).jpeg"></img>', 
+    'In the following picture you see a round with the yellow robber. Just now a token appeared. <BR/> <BR/> <img src="/static/images/instructionsLevel1(2).jpeg"></img>', 
 
     'Once you collected it, it appears on the left upper part of the screen <BR/> <BR/> <img src="/static/images/instructionsLevel1(3).jpeg"></img>',
 
     'Here the same situation again but with a purple robber. <BR/> <BR/> <img src="/static/images/instructionsLevel1(4).jpeg"></img>',
 
-    'Here you collected the first diamond. Now a new one appears. In each round up to six diamonds can appear. <BR/> <BR/> <img src="/static/images/instructionsLevel1(5).jpeg"></img>',
+    'Here you collected the first token. Now a new one appears. In each round up to six tokens can appear. <BR/> <BR/> <img src="/static/images/instructionsLevel1(5).jpeg"></img>',
 
-    'However: the sleeping robber can wake up and attack you at any time. If this happens you will lose your life - the round ends and all your diamonds for this round are lost. <BR/> <img src="/static/images/instructionsLevel1(6).jpeg"></img>',
+    'However: the sleeping robber can wake up and attack you at any time. If this happens you will lose your life - the round ends and all your tokens for this round are lost. <BR/> <img src="/static/images/instructionsLevel1(6).jpeg"></img>',
 
-    'Try to avoid this. Remember: your task is to complete each round with as many diamonds as possible. If you get attacked, you do not have any diamonds for this round. If you want to prevent that, just stay in the safe square and do not catch new diamonds. With time you will get a feeling for how fast diamonds are appearing and disappearing. And what is most important, a feeling for how often the robbers will awake and attack you.',
+    'Try to avoid this. Remember: your task is to complete each round with as many tokens as possible. If you get attacked, you do not have any tokens for this round. If you want to prevent that, just stay in the safe square and do not catch new tokens. With time you will get a feeling for how fast tokens are appearing and disappearing. And what is most important, a feeling for how often the robbers will awake and attack you.',
 
-    'By the way: whether you collect a diamond or not - the next diamond will not appear any faster or slower. Therefore you cannot shorten the experiment with your strategy. <BR/> <BR/> At the end of the experiment one "<b>Catch diamonds</b>" round is elected randomly. <BR/> For each diamond you collected in this chosen round, you will receive an extra $2.5 on top of the $15 participation payment. <BR/> <BR/> If you are really unlucky and you did not collect any diamonds in that elected round, you will not receive any extra amount of money. To prevent that, keep in mind to not get caught by the robber.',
+    'By the way: whether you collect a token or not - the next token will not appear any faster or slower. Therefore you cannot shorten the experiment with your strategy. <BR/> <BR/> At the end of the experiment one "<b>Catch tokens</b>" round is elected randomly. <BR/> For each token you collected in this chosen round, you will receive an extra $2.5 on top of the $15 participation payment. <BR/> <BR/> If you are really unlucky and you did not collect any tokens in that elected round, you will not receive any extra amount of money. To prevent that, keep in mind to not get caught by the robber.',
 
     '<BR/> <BR/> What follows now is a short comprehension test. Please, click next to start.'],
 
-    show_clickable_nav: true // experiment instructions 
+    show_clickable_nav: true,
+    on_finish: function(){
+        jsPsych.setProgressBar(0.02); 
+    } // experiment instructions 
 };
 
 
 var instruction_messageLevelTwo = {
 
   type: 'instructions',
-  pages: ['<b>Level 2</b> <BR/>Until now the robber could catch you at any time when you were collecting diamonds <BR/> <BR/> <b>From now on you have the chance to expose the robber.</b>',
+  pages: ['<b>Level 2</b> <BR/>Until now the robber could catch you at any time when you were collecting tokens <BR/> <BR/> <b>From now on you have the chance to expose the robber.</b>',
 
       'In order to expose the robber you have to press the arrow key "up" in exactly the moment when he is awake. If you get him, you win an extra amount of money. If you do not get him, you will win nothing',
 
-      'Hence there are from now on two possible game modes <BR/> <b>1. Collect diamonds!</b> In this game mode you see a gray diamond under the grid. These rounds are the same as in level 1 before. <img src="/static/images/instructionsLevel2(1).jpeg"></img>',
+      'Hence there are from now on two possible game modes <BR/> <b>1. Collect tokens!</b> In this game mode you see a gray token under the grid. These rounds are the same as in level 1 before. <img src="/static/images/instructionsLevel2(1).jpeg"></img>',
 
-      '<b>2. Catch the robber!</b> In this game mode you see a gray robber under the grid.<BR/> <BR/> <img src="/static/images/instructionsLevel2(2).jpeg"></img> <BR/> Like in level 1, six diamonds will appear left and right. <b> You cannot collect them though! The left/right arrow keys are inactive.',
+      '<b>2. Catch the robber!</b> In this game mode you see a gray robber under the grid.<BR/> <BR/> <img src="/static/images/instructionsLevel2(2).jpeg"></img> <BR/> Like in level 1, six tokens will appear left and right. <b> You cannot collect them though! The left/right arrow keys are inactive.',
 
       'You can only press the up key.</b> If the robber is sleeping when you press the key, he turns black and the game proceeds. <BR/> <img src="/static/images/instructionsLevel2(3).jpeg"></img>',
 
       'If the robber is currently awake, he turns red. <b> This shows you that you caught him.</b> The round is over instantly, <b> and you can win extra money from this round.<BR/> <img src="/static/images/instructionsLevel2(4).jpeg"></img>',
 
-      'In each round you can try to expose the robber 6 times. The round is over when you expose the robber or when all diamonds have appeared. If you try to catch the robber 6 times without success, the up key turns inactive.<BR/> At the end of the experiment a "<b>Catch the robber</b>" round gets elected randomly. If you managed to expose the robber in this elected round, you will win an extra $2.5 on top of the earnings from the elected "<b> Collect diamonds</b>" round. Keep in mind to try to expose the robber exactly when you think he is awake. Be aware that you do not see in advance whether the robber is awake or not. <BR/> <BR/> What follows now is a short comprehension test. Please, click next to start.<BR/>'],
+      'In each round you can try to expose the robber 6 times. The round is over when you expose the robber or when all tokens have appeared. If you try to catch the robber 6 times without success, the up key turns inactive.<BR/> At the end of the experiment a "<b>Catch the robber</b>" round gets elected randomly. If you managed to expose the robber in this elected round, you will win an extra $2.5 on top of the earnings from the elected "<b> Collect tokens</b>" round. Keep in mind to try to expose the robber exactly when you think he is awake. Be aware that you do not see in advance whether the robber is awake or not. <BR/> <BR/> What follows now is a short comprehension test. Please, click next to start.<BR/>'],
   
-  show_clickable_nav: true
+  show_clickable_nav: true,
+  on_finish: function(){
+        jsPsych.setProgressBar(0.02); 
+    }
 };
 
 var level1Start = {
 
   type: "text",
-  text: "Level 1 has 45 rounds and takes around 13 mins to finish with 3 breaks.<BR/>  <BR/> press spacebar to start",
-  timing_post_trial: 2000
+  text: "Level 1 has 45 rounds and takes around 13 mins to finish with 2 breaks.<BR/>  <BR/> press spacebar to start",
+  timing_post_trial: 2000,
+  on_finish: function(){
+        jsPsych.setProgressBar(0.01); 
+    }
 };
 
 
@@ -92,7 +107,10 @@ var level2Start = {
 
   type: "text",
   text: "Level 2 has 16 rounds and takes around 4 mins to finish with 1 break. <BR/> <BR/>  press spacebar to start",
-  timing_post_trial: 2000
+  timing_post_trial: 2000,
+  on_finish: function(){
+        jsPsych.setProgressBar(0.01); 
+    }
 };
 
 
@@ -100,7 +118,10 @@ var instruction_postTest = {
 
       type: 'instructions',
       pages: ['<b>Congratulations you made it through all levels!!!</b> <BR/><BR/> On the following pages we show you the different grids you saw during the experiment. For each grid we ask you to estimate the probability for the robber to catch you if you step out of the safe zone. If you are not sure about it, we ask you to give your fast intuitive estimation. There are no right or wrong responses. We are interested in your personal opinion.'],
-      show_clickable_nav: true
+      show_clickable_nav: true,
+      on_finish: function(){
+        jsPsych.setProgressBar(0.01); 
+    }
 };
 
 var surveyPost_Test1 = {
@@ -113,7 +134,10 @@ var surveyPost_Test1 = {
   timing_first_stim: 0.1,
   timing_second_stim: -1,
   timing_image_gap: 0.1,
-  prompt: '<BR/><p>How high was the probability of getting caught in this grid when you left the safe zone?</p>'
+  prompt: '<BR/><p>How high was the probability of getting caught in this grid when you left the safe zone?</p>',
+   on_finish: function(){
+        jsPsych.setProgressBar(0.004); 
+    }
 };
 
 var surveyPost_Test2 = {
@@ -126,7 +150,10 @@ var surveyPost_Test2 = {
   timing_first_stim: 0.1,
   timing_second_stim: -1,
   timing_image_gap: 0.1,
-  prompt: '<BR/><p>How high was the probability of getting caught in this grid when you left the safe zone?</p>'
+  prompt: '<BR/><p>How high was the probability of getting caught in this grid when you left the safe zone?</p>',
+   on_finish: function(){
+        jsPsych.setProgressBar(0.003); 
+    }
 };
 
 var surveyPost_Test3 = {
@@ -139,32 +166,40 @@ var surveyPost_Test3 = {
   timing_first_stim: 0.1,
   timing_second_stim: -1,
   timing_image_gap: 0.1,
-  prompt: '<BR/><p>How high was the probability of getting caught in this grid when you left the safe zone?</p>'
+  prompt: '<BR/><p>How high was the probability of getting caught in this grid when you left the safe zone?</p>',
+  on_finish: function(){
+        jsPsych.setProgressBar(0.003); 
+    }
 };
 
 
 var break_messageLvlOneA = {
 
   type: "text",
-  text: "First period out of three completed. <BR/>  short break, press any key to continue"
+  text: "First period out of three completed. <BR/>  short break, press any key to continue",
+  on_finish: function(){
+        jsPsych.setProgressBar(0.005); 
+    }
 };
+
 
 var break_messageLvlOneB = {
 
     type: "text",
-    text: "Second period out of three completed. <BR/>  short break, press any key to continue"
+    text: "Second period out of three completed. <BR/>  short break, press any key to continue",
+    on_finish: function(){
+        jsPsych.setProgressBar(0.005); 
+    }
 };
 
-var break_messageLvlOneC = {
-
-    type: "text",
-    text: "Third and last period. <BR/>  short break, press any key to continue"
-};
 
 var break_messageLvlTwo = {
 
     type: "text",
-    text: "First period out of two completed <BR/>  short break, press any key to continue with last period"
+    text: "First period out of two completed <BR/>  short break, press any key to continue with last period",
+      on_finish: function(){
+        jsPsych.setProgressBar(0.01); 
+    }
 };
 
 var preloadImages = {
@@ -185,21 +220,30 @@ var levelOneA = {
 
   type: "AAALevelOne",
   shuffledLambda: shuffledRobberLambda,
-  robberColor: robberColor[0]
+  robberColor: robberColor[0],
+    on_finish: function(){
+        jsPsych.setProgressBar(0.004); 
+    }
 };
 
 var levelOneB = {
 
   type: "AAALevelOne",
   shuffledLambda: shuffledRobberLambda,
-  robberColor: robberColor[1]
+  robberColor: robberColor[1],
+   on_finish: function(){
+        jsPsych.setProgressBar(0.004); 
+    }
 };
 
 var levelOneC = {
 
   type: "AAALevelOne",
   shuffledLambda: shuffledRobberLambda,
-  robberColor: robberColor[2]
+  robberColor: robberColor[2],
+   on_finish: function(){
+        jsPsych.setProgressBar(0.004); 
+    }
 };
 
 //levelTwo catch diamonds Color A-C
@@ -207,21 +251,30 @@ var levelTwoA = {
 
   type: "AAALevelTwoA",
   shuffledLambda: shuffledRobberLambda,
-  robberColor: robberColor[0]
+  robberColor: robberColor[0],
+  on_finish: function(){
+        jsPsych.setProgressBar(0.005); 
+    }
 };
 
 var levelTwoB = {
 
   type: "AAALevelTwoA",
   shuffledLambda: shuffledRobberLambda,
-  robberColor: robberColor[1]
+  robberColor: robberColor[1],
+  on_finish: function(){
+        jsPsych.setProgressBar(0.005); 
+    }
 };
 
 var levelTwoC = {
 
   type: "AAALevelTwoA",
   shuffledLambda: shuffledRobberLambda,
-  robberColor: robberColor[2]
+  robberColor: robberColor[2],
+  on_finish: function(){
+        jsPsych.setProgressBar(0.005); 
+    }
 };
 
 // levelTwo catch the robber Color A-C
@@ -229,21 +282,30 @@ var levelTwoBA = {
 
   type: "AAALevelTwoB",
   shuffledLambda: shuffledRobberLambda,
-  robberColor: robberColor[0]
+  robberColor: robberColor[0],
+  on_finish: function(){
+        jsPsych.setProgressBar(0.005); 
+    }
 };
 
 var levelTwoBB = {
 
   type: "AAALevelTwoB",
   shuffledLambda: shuffledRobberLambda,
-  robberColor: robberColor[1]
+  robberColor: robberColor[1],
+  on_finish: function(){
+        jsPsych.setProgressBar(0.005); 
+    }
 };
 
 var levelTwoBC = {
 
   type: "AAALevelTwoB",
   shuffledLambda: shuffledRobberLambda,
-  robberColor: robberColor[2]
+  robberColor: robberColor[2],
+  on_finish: function(){
+        jsPsych.setProgressBar(0.005); 
+    }
 };
 
 // comprehension tests
@@ -275,8 +337,10 @@ var comprTest1 =
     preamble: ['<strong>Please read each question carefully and answer it </strong>'],
     options: [comprScale1, comprScale2, comprScale3, comprScale4, comprScale5],
     required: [true, true, true, true, true],
-    data:{label: 'compr1', trialType: 'quest'}
-    };
+    data:{label: 'compr1', trialType: 'quest'},
+    on_finish: function(){
+        jsPsych.setProgressBar(0.01); 
+    }};
 
 
 // part two of experiment
@@ -299,8 +363,10 @@ var comprTest2 =
     preamble: ['<strong>Please read each question carefully and answer it </strong>'],
     options: [compr2Scale1, compr2Scale2, compr2Scale3, compr2Scale4, compr2Scale5],
     required: [true, true, true, true, true],
-    data:{label: 'compr2', trialType: 'quest'}
-    };
+    data:{label: 'compr2', trialType: 'quest'},
+      on_finish: function(){
+        jsPsych.setProgressBar(0.01); 
+    }};
 
 
   var loopComprT1 = {
@@ -372,6 +438,9 @@ var feedbackParticipant = {
   rows: [15],
   columns: [90],
   questions: ["(feedback is optional) <BR/> <BR/> In order to keep track of possible bugs and to improve the experience, <BR/> we kindly ask you to give us feedback. Feel free to share your opinion with us on our experiment.<BR/>"],
+    on_finish: function(){
+        jsPsych.setProgressBar(0.01); 
+    }
 };
 
 
@@ -439,7 +508,10 @@ var bis_scale = ["Do not agree at all",  "Agree slightly", "Agree a lot",  "Agre
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     horizontal: true,
     preamble: ['<strong>People differ in the ways they act and think in different situations. Read each statement and rate according to the labels. Do not spend too much time on any statement. Answer quickly and honestly.'],
-    data:{label: 'bis', trialType: 'quest'}
+    data:{label: 'bis', trialType: 'quest'},
+      on_finish: function(){
+        jsPsych.setProgressBar(0.05); 
+    }
     };
 
 
@@ -482,8 +554,10 @@ var ocir_qn = ['1) I have saved up so many things that they get in the way. ',
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     horizontal: true,
     preamble: ['<strong>The following statements refer to experiences that many people have in their everyday lives. Rate according to the label that best describes HOW MUCH that experience has DISTRESSED or BOTHERED you during the PAST MONTH.</strong>'],
-
-    data:{label: 'ocir', trialType: 'quest'}
+    data:{label: 'ocir', trialType: 'quest'},
+      on_finish: function(){
+        jsPsych.setProgressBar(0.04); 
+    }
     };
 
 
@@ -546,7 +620,10 @@ var schizo_scale = ["No", "Yes"];
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     horizontal: true,
     preamble: ["<strong>Please read the statements and answer whether you agree or disagree with the statements with 'No' or 'Yes' ONLY.</strong>"],
-    data:{label: 'schizo', trialType: 'quest'}
+    data:{label: 'schizo', trialType: 'quest'},
+      on_finish: function(){
+        jsPsych.setProgressBar(0.06); 
+    }
     };
 
 
@@ -584,7 +661,10 @@ var zung_scale = ["A little of the time",  "Some of the time", "Good part of the
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     horizontal: true,
     preamble : ['<strong>Please read each statement and decide HOW MUCH of the time the statement describes how you have been feeling during the PAST SEVERAL DAYS.</strong>'],
-    data:{label: 'depress', trialType: 'quest'}
+    data:{label: 'depress', trialType: 'quest'},
+      on_finish: function(){
+        jsPsych.setProgressBar(0.04); 
+    }
     };
 
 
@@ -653,8 +733,10 @@ var lebsocial_scale2 = [ "Never (0%)" ,"Occasionally (1—33%)", "Often (33—67
     options: [lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2, lebsocial_scale1,lebsocial_scale2],
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     preamble: ['<strong>Read each bolded statement carefully and answer two questions about that statement. The first question asks how ANXIOUS or FEARFUL you feel in that situation. The second question asks how often you AVOID that situation. Please base your ratings on the way that the situations have affected you in the LAST WEEK.</strong>'],
-
-    data:{label: 'social', trialType: 'quest'}
+    data:{label: 'social', trialType: 'quest'},
+      on_finish: function(){
+        jsPsych.setProgressBar(0.04); 
+    }
     };
 
 
@@ -715,7 +797,10 @@ var iq_scale10 = ["A" ,"B", "C", "D" , "E", "F","G","H"];
     preamble: ['<strong>Please read each question carefully and answer as best as you can.</strong>'],
     options: [iq_scale1,iq_scale2,iq_scale3,iq_scale4,iq_scale5,iq_scale6,iq_scale7,iq_scale8,iq_scale9,iq_scale9,iq_scale9,iq_scale9,iq_scale10,iq_scale10,iq_scale10,iq_scale10],
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
-    data:{label: 'iq', trialType: 'quest'}
+    data:{label: 'iq', trialType: 'quest'},
+      on_finish: function(){
+        jsPsych.setProgressBar(0.08); 
+    }
     };
     
     
@@ -743,7 +828,10 @@ var alcohol_scale4 = [ "No","Yes, but not in the last year","Yes, during the las
     options: [alcohol_scale1,alcohol_scale2,alcohol_scale3,alcohol_scale3,alcohol_scale3,alcohol_scale3,alcohol_scale3,alcohol_scale3,alcohol_scale4,alcohol_scale4],
     required: [true,true,true,true,true,true,true,true,true,true],
     preamble: ['<strong>Now we are going to ask you some questions about your use of alcoholic beverages during the past year. Please try to be as honest and as accurate as you can be.</strong>'],
-    data:{label: 'alcohol', trialType: 'quest'}
+    data:{label: 'alcohol', trialType: 'quest'},
+      on_finish: function(){
+        jsPsych.setProgressBar(0.03); 
+    }
     };
     
 //APATHY PLUGIN
@@ -774,7 +862,10 @@ var apathy_scale = [ "Not at all characteristic","Slightly characteristic","Some
     options: [apathy_scale,apathy_scale,apathy_scale,apathy_scale,apathy_scale,apathy_scale,apathy_scale,apathy_scale,apathy_scale,apathy_scale,apathy_scale,apathy_scale,apathy_scale,apathy_scale,apathy_scale,apathy_scale,apathy_scale,apathy_scale],
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     preamble: ['<strong>For each question, choose the answer that best describes your thoughts, feelings, and actions during the past 4 weeks.</strong>'],
-    data:{label: 'apathy', trialType: 'quest'}
+    data:{label: 'apathy', trialType: 'quest'},
+      on_finish: function(){
+        jsPsych.setProgressBar(0.03); 
+    }
     };
 
     
@@ -814,7 +905,10 @@ var eat_scale = [ "Always","Usually","Often","Sometimes","Rarely","Never"];
     options: [eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale],
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     preamble: ['<strong>Please answer the questions below as accurately, honestly and completely as possible. There are no right or wrong answers.</strong>'],
-    data:{label: 'eat', trialType: 'quest'}
+    data:{label: 'eat', trialType: 'quest'},
+      on_finish: function(){
+        jsPsych.setProgressBar(0.04); 
+    }
     };
     
     
@@ -849,7 +943,10 @@ var anxiety2_scale = [ "Almost never","Sometimes","Often","Almost always"];
     options: [anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale , anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale, anxiety2_scale,anxiety2_scale,anxiety2_scale,anxiety2_scale],
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     preamble: ['<strong>Read each statement and select the appropriate response to indicate how you generally feel. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
-    data:{label: 'anxiety-Y2', trialType: 'quest'}
+    data:{label: 'anxiety-Y2', trialType: 'quest'},
+      on_finish: function(){
+        jsPsych.setProgressBar(0.03); 
+    }
     };
 
 //STAI Form Y1 - ANXIETY PLUGIN
@@ -882,7 +979,10 @@ var anxiety1_scale = [ "Not at all","Somewhat","Moderately so","Very much so"];
     options: [anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale , anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale, anxiety1_scale,anxiety1_scale,anxiety1_scale,anxiety1_scale],
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     preamble: ['<strong>Read each statement and select the appropriate response to indicate how you feel right now, that is, at this very moment. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
-    data:{label: 'anxiety-Y1', trialType: 'quest'}
+    data:{label: 'anxiety-Y1', trialType: 'quest'},
+      on_finish: function(){
+        jsPsych.setProgressBar(0.03); 
+    }
     };  
 
 // Taylor Manifest Anxiety Scale (TMAS)
@@ -946,7 +1046,10 @@ var anxietyTMAS_scale = [ "True","False"];
     options: [anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale],
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     preamble: ['<strong>Read each statement and select the appropriate response.</strong>'],
-    data:{label: 'anxiety-TMAS', trialType: 'quest'}
+    data:{label: 'anxiety-TMAS', trialType: 'quest'},
+      on_finish: function(){
+        jsPsych.setProgressBar(0.07); 
+    }
     };  
 
 
@@ -966,7 +1069,10 @@ var daringnessCADS_scale = [ "Not at all","Just a little","Pretty much/pretty of
     options: [daringnessCADS_scale,daringnessCADS_scale,daringnessCADS_scale,daringnessCADS_scale,daringnessCADS_scale],
     required: [true,true,true,true,true],
     preamble: ['<strong>When you answer these questions, please think about the last 12 months and tick the box that you feel best describes you.</strong>'],
-    data:{label: 'daringness-CADS', trialType: 'quest'}
+    data:{label: 'daringness-CADS', trialType: 'quest'},
+      on_finish: function(){
+        jsPsych.setProgressBar(0.03); 
+    }
     };  
     
     
@@ -1059,6 +1165,7 @@ var totalRewardWon;
 var rewardCalculation = function() {             // function for calculating the reward of a participant
 
     var totalReward = 15;      // participation payment: 15$
+    var bonus = 0;
 
     //levelOne  -- choose a random trial among all level one's
     var allCatchDiamonds = jsPsych.data.getTrialsOfType("AAALevelOne");  
@@ -1074,7 +1181,7 @@ var rewardCalculation = function() {             // function for calculating the
     if(isCaught == "false"){
 
       wonToken = parseInt(nrWonTok);  // + bonus for every caught diamond default 2.5$ per nrWonTok
-      totalReward += wonToken*2.5;
+      bonus += wonToken*2.5;
     }
 
 
@@ -1089,14 +1196,13 @@ var rewardCalculation = function() {             // function for calculating the
 
     if(caughtRobber == "true"){
 
-      totalReward += 2.5;  // Bonus for level 2B for + 2.5$ if robber was caught in that round
+      bonus += 2.5;  // Bonus for level 2B for + 2.5$ if robber was caught in that round
     }
    
 
-    totalRewardWon = totalReward;
-
-    jsPsych.data.addProperties({earnedReward: totalReward});
-    psiturk.recordUnstructuredData('bonus', totalRewardWon - totalReward);  // only the bonus without participation payment, fetched by custom compute_bonus 
+    totalRewardWon = totalReward + bonus;
+    jsPsych.data.addProperties({earnedReward: totalRewardWon});
+    psiturk.recordUnstructuredData('bonus', bonus);  // only the bonus without participation payment, fetched by custom compute_bonus 
     
  };
 
@@ -1109,12 +1215,15 @@ var rewardCalc = {
 var rewardInformation = {
 
     type: "text",
-    text: function(){ return ("<b> What follows now is the calculation of your reward!</b>  <BR/><BR/>Summed up there are 49 possible 'catch diamonds' rounds from level 1 (with 45 rounds) and level 2 (with 4 rounds) as well as 12 possible 'catch the robber' rounds from level 2 only.<BR/> <BR/>" +
-        "From those rounds one '<b>catch diamonds</b>' and one '<b>catch the robber</b>' round will be selected randomly.<BR/> <BR/>" + 
-          "As '<b>catch diamonds</b>' round <b>"  + (chosenTrialLvl1+1) +  "</b> was randomly selected. <BR/> <BR/>In this chosen round you collected <b>" +
+    text: function(){ return ("<b> What follows now is the calculation of your reward!</b>  <BR/><BR/>Summed up there are 49 possible 'catch tokens' rounds from level 1 (with 45 rounds) and level 2 (with 4 rounds) as well as 12 possible 'catch the robber' rounds from level 2 only.<BR/> <BR/>" +
+        "From those rounds one '<b>catch tokens</b>' and one '<b>catch the robber</b>' round will be selected randomly.<BR/> <BR/>" + 
+          "As '<b>catch tokens</b>' round <b>"  + (chosenTrialLvl1+1) +  "</b> was randomly selected. <BR/> <BR/>In this chosen round you collected <b>" +
          nrWonTokensLvl1 + "</b> tokens. This gives you a bonus of<b> " + (nrWonTokensLvl1*2.5) + "$</b>.<BR/> <BR/> As for 'catch the robber', round <b> " + (chosenTrialLvl2+1) + "</b> , was randomly selected.<BR/> <BR/>" +
          "In this selected round you " + isItCaught() +
-        "<BR/> <BR/>In this way you earned a total of <b> " + totalRewardWon + "$</b> in this experiment. <BR/> <BR/> press spacebar to continue ")}
+        "<BR/> <BR/>In this way you earned a total of <b> " + totalRewardWon + "$</b> in this experiment. <BR/> <BR/> press spacebar to continue ")},
+      on_finish: function(){
+        jsPsych.setProgressBar(0.02); 
+    }
       };
 
 // heleper function to determine whether the robber was caught or not
@@ -1130,21 +1239,20 @@ var isItCaught = function(){
     }
 };
 
+ 
 
 //MAIN --> defining experiment structure
 
-var timeline = []; //welcome_message, entrySurvey_block,instruction_messageLevelOne
- 
-    
-      timeline.push(levelOneA);
-  
-    /*
+var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne]; 
+
+
+
      timeline = timeline.concat(comprehensionTestBlock1);
      timeline.push(level1Start);
      timeline = timeline.concat(levelOneListA);
      timeline.push(break_messageLvlOneA);
      timeline = timeline.concat(levelOneListB);
-     timeline.push(break_messageLvlOneC);
+     timeline.push(break_messageLvlOneB);
      timeline = timeline.concat(levelOneListC);
 
      timeline = timeline.concat(instruction_messageLevelTwo);
@@ -1160,21 +1268,22 @@ var timeline = []; //welcome_message, entrySurvey_block,instruction_messageLevel
      timeline.push(rewardCalc);
      timeline.push(rewardInformation);
      timeline.push(feedbackParticipant);
-    */
-
+  
 
 
 jsPsych.init({
     display_element: $('#jspsych-target'),
     timeline: timeline,
     fullscreen: true,       // fullscreen setting 
-    show_progress_bar: true,  
+    show_progress_bar: true,
+    auto_update_progress_bar: false, 
 
     // record data to psiTurk after each trial
     on_data_update: function(data) {
         psiturk.recordTrialData(data);
 
     },
+
     on_finish: function() {
 
 

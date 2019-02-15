@@ -58,6 +58,7 @@ var jsPsych = (function() {
         return undefined;
       },
       'show_progress_bar': false,
+      'auto_update_progress_bar': true,
       'auto_preload': true,
       'max_load_time': 30000,
       'skip_load_check': false,
@@ -149,10 +150,10 @@ var jsPsych = (function() {
       // advance timeline
       var complete = timeline.advance();
 
-      // update progress bar if shown
-      if (opts.show_progress_bar === true) {
-        updateProgressBar();
-      }
+       // update progress bar if shown
+    if (opts.show_progress_bar === true && opts.auto_update_progress_bar == true) {
+       updateProgressBar();
+    }
 
       // check if experiment is over
       if (complete) {
@@ -577,14 +578,28 @@ var jsPsych = (function() {
     jsPsych.plugins[trial.type].trial(display_element, trial);
   }
 
+
   function drawProgressBar() {
     $('body').prepend($('<div id="jspsych-progressbar-container"><span>Completion Progress</span><div id="jspsych-progressbar-outer"><div id="jspsych-progressbar-inner"></div></div></div>'));
   }
 
   function updateProgressBar() {
-    var progress = jsPsych.progress();
+    var progress = jsPsych.progress().percent_complete;
+    //$('#jspsych-progressbar-inner').css('width', progress.percent_complete + "%");
+    core.setProgressBar(progress / 100);
+  }
 
-    $('#jspsych-progressbar-inner').css('width', progress.percent_complete + "%");
+  var progress_bar_amount = 0;
+  
+  core.setProgressBar = function(proportion_complete){
+    proportion_complete = Math.max(Math.min(1,proportion_complete),0);
+    progress_bar_amount += proportion_complete;
+    $('#jspsych-progressbar-inner').css('width', progress_bar_amount*100 + "%");
+   
+  }
+
+  core.getProgressBarCompleted = function(){
+    return progress_bar_amount;
   }
 
   return core;
