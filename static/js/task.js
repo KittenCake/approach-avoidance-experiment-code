@@ -1271,6 +1271,7 @@ var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne];
   
 
 
+
 jsPsych.init({
     display_element: $('#jspsych-target'),
     timeline: timeline,
