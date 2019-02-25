@@ -28,7 +28,7 @@ login_pw = root
 threads = auto
 
 [Task Parameters]
-experiment_code_version = Pilot code version: 1.0
+experiment_code_version = Pilot code version: 1.1
 num_conds = 1
 num_counters = 1
 

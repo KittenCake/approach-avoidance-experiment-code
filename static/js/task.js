@@ -1308,9 +1308,9 @@ var isItCaught = function(){
 
    
 
-var timeline = []; //welcome_message, entrySurvey_block,instruction_messageLevelOne
+var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne]; 
 
-    timeline = timeline.concat(questionnaires);
+    
 
      timeline = timeline.concat(comprehensionTestBlock1);
      timeline.push(level1Start);
@@ -1334,7 +1334,6 @@ var timeline = []; //welcome_message, entrySurvey_block,instruction_messageLevel
      timeline.push(rewardInformation);
      timeline.push(feedbackParticipant);
   
-
 
 
 jsPsych.init({
