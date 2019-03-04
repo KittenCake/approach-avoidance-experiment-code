@@ -42,7 +42,7 @@ var instruction_messageLevelOne = {
     type: 'instructions',
     pages: [ 'Please read following instructions carefully. <BR/> Now you will be collecting tokens in an easy computer game. Your task is to win as many tokens as possible - in each round of the game.',
 
-    'In each round you will see a playing board with 4 fields. The green triangle - that is you. You are in a "safe square" - it is dark gray and you cant be caught by the robber in it. Right across from you sits a sleeping "robber". There are three different types of robbers in this game. They are all gray - but the frame color is different for each of them: yellow, purple or cyan-blue (like here). These "robbers" are differently dangerous. It is important  that you learn how the robbers differ from each other - and that you adapt your strategy to it. <BR/> <BR/> <img src="/static/images/instructionsLevel1(1).jpeg"></img>',
+    'In each round you will see a playing board with 4 fields. The green triangle - that is you. You are in a "safe square" - it is dark gray and you can\'t be caught by the robber in it. Right across from you sits a sleeping "robber". There are three different types of robbers in this game. They are all gray - but the frame color is different for each of them: yellow, purple or cyan-blue (like here). These "robbers" are differently dangerous. It is important  that you learn how the robbers differ from each other - and that you adapt your strategy to it. <BR/> <BR/> <img src="/static/images/instructionsLevel1(1).jpeg"></img>',
 
     'From time to time yellow tokens pop up in the left or right white empty squares. The tokens disappear after some time. To collect a token, move to the token and back onto the "safe square" by pressing the arrow keys of your keyboard (right/left). You can only move left and right, and not reach the field where the robber sleeps.',
 
@@ -54,7 +54,7 @@ var instruction_messageLevelOne = {
 
     'Here you collected the first token. Now a new one appears. In each round up to six tokens can appear. <BR/> <BR/> <img src="/static/images/instructionsLevel1(5).jpeg"></img>',
 
-    'However: the sleeping robber can wake up and attack you at any time. If this happens you will lose your life - the round ends and all your tokens for this round are lost. <BR/> <img src="/static/images/instructionsLevel1(6).jpeg"></img>',
+    'However: the sleeping robber can wake up at any time and attack you, if you are outside of the safe square. If this happens you will lose your life - the round ends and all your tokens for this round are lost. <BR/> <img src="/static/images/instructionsLevel1(6).jpeg"></img>',
 
     'Try to avoid this. Remember: your task is to complete each round with as many tokens as possible. If you get attacked, you do not have any tokens for this round. If you want to prevent that, just stay in the safe square and do not catch new tokens. With time you will get a feeling for how fast tokens are appearing and disappearing. And what is most important, a feeling for how often the robbers will awake and attack you.',
 
@@ -347,7 +347,7 @@ var comprTest1 =
   var comprQn2 = ['1) What is your task in this situation? <img id="jspych-comprehend" src="/static/images/comprehend2.1.jpeg"></img>',
               '2)  How many chances do you get to catch the robber?',
               '3)  What happened in this situation? <img id="jspych-comprehend" src="/static/images/comprehend2.3.jpeg"></img>',
-              '4)  Do you see whether the robber is active or not?',
+              '4)  Do you see whether the robber is active or not before trying to expose him?',
               '5)  How many tokens do you have to catch in a catch the robber trial?'
                ];
 
@@ -453,9 +453,20 @@ var countFailedScreener = 0;
 // pre-finish function (if participant failed 3 screeners ask to return the hit - leads to end screen)
   function failedScreeners (){
 
-    psiturk.preloadPages(["failedScreenerInfo.html"]);
-    psiturk.showPage("failedScreenerInfo.html");
-  };
+      psiturk.saveData({
+          success: function() {
+
+            $("#jspsych-target").remove();
+            $( "#jspsych-progressbar-container" ).load( "failedScreenerInfo.html" );
+            
+          },
+          error: function() {
+                console.log("no data");// function to run if there was an error
+          }
+
+        });
+
+    };
 
 
 
@@ -497,20 +508,19 @@ var  bis_qn =[' 1) I plan tasks carefully.',
         '15) I like to think about complex problems.',
         '16) I change jobs.',
         '17) I act “on impulse.”',
-        "18) If you are paying attention to these questions, please select 'Agree slightly' as your answer.", // !!!!!catch question in Bis number 18
-        '19) I get easily bored when solving thought problems.',
-        '20) I act on the spur of the moment.',
-        '21) I am a steady thinker.',
-        '22) I change residences.',
-        '23) I buy things on impulse.',
-        '24) I can only think about one thing at a time.',
-        '25) I change hobbies.',
-        '26) I spend or charge more than I earn.',
-        '27) I often have extraneous thoughts when thinking.',
-        '28) I am more interested in the present than the future.',
-        '29) I am restless at the theater or lectures.',
-        '30) I like puzzles.',
-        '31) I am future oriented.'];
+        '18) I get easily bored when solving thought problems.',
+        '19) I act on the spur of the moment.',
+        '20) I am a steady thinker.',
+        '21) I change residences.',
+        '22) I buy things on impulse.',
+        '23) I can only think about one thing at a time.',
+        '24) I change hobbies.',
+        '25) I spend or charge more than I earn.',
+        '26) I often have extraneous thoughts when thinking.',
+        '27) I am more interested in the present than the future.',
+        '28) I am restless at the theater or lectures.',
+        '29) I like puzzles.',
+        '30) I am future oriented.'];
 
 
 var bis_scale = ["Do not agree at all",  "Agree slightly", "Agree a lot",  "Agree completely"];
@@ -519,28 +529,13 @@ var bis_scale = ["Do not agree at all",  "Agree slightly", "Agree a lot",  "Agre
     var bis = 
     { type: "survey-multi-choiceOriginal",
     questions: bis_qn,
-    options: [bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale],
-    required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
+    options: [bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale,bis_scale],
+    required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     horizontal: true,
     preamble: ['<strong>People differ in the ways they act and think in different situations. Read each statement and rate according to the labels. Do not spend too much time on any statement. Answer quickly and honestly.'],
     data:{label: 'bis', trialType: 'quest'},
-      on_finish: function(trial_data){
+      on_finish: function(){
 
-        var response = trial_data.responses;        
-        var patt =  /"Q17":"Agree slightly"/i;
-        var result = response.match(patt);
-  
-        if (result == null){
-
-          countFailedScreener += 1;
-
-            if(countFailedScreener >= 1){
-
-              //run pre-exit
-              failedScreeners();
-            }
-        }
-        
         jsPsych.setProgressBar(0.05); 
     }
     };
@@ -603,42 +598,42 @@ var schizo_qn = ['1) When in the dark do you often see shapes and forms even tho
         '10) Do you feel that your accidents are caused by mysterious forces?',
         '11) Do you ever have a sense of vague danger or sudden dread for reasons that you do not understand?',
         '12) Does your sense of smell sometimes become unusually strong?',
+        "13) If you are paying attention to these questions, please select 'Yes' as your answer.", // !!!!!catch question in schizo number 13
+        '14) Are you easily confused if too much happens at the same time?',
+        '15) Do you frequently have difficulty in starting to do things?',
+        '16) Are you a person whose mood goes up and down easily?',
+        '17) Do you dread going into a room by yourself where other people have already gathered and are talking?',
+        '18) Do you find it difficult to keep interested in the same thing for a long time?',
+        '19) Do you often have difficulties in controlling your thoughts?',
+        '20) Are you easily distracted from work by daydreams?',
+        "21) Do you ever feel that your speech is difficult to understand because the words are all mixed up and don't make sense?",
+        '22) Are you easily distracted when you read or talk to someone?',
+        '23) Is it hard for you to make decisions?',
+        '24) When in a crowded room, do you often have difficulty in following a conversation?',
 
-        '13) Are you easily confused if too much happens at the same time?',
-        '14) Do you frequently have difficulty in starting to do things?',
-        '15) Are you a person whose mood goes up and down easily?',
-        '16) Do you dread going into a room by yourself where other people have already gathered and are talking?',
-        '17) Do you find it difficult to keep interested in the same thing for a long time?',
-        '18) Do you often have difficulties in controlling your thoughts?',
-        '19) Are you easily distracted from work by daydreams?',
-        "20) Do you ever feel that your speech is difficult to understand because the words are all mixed up and don't make sense?",
-        '21) Are you easily distracted when you read or talk to someone?',
-        '22) Is it hard for you to make decisions?',
-        '23) When in a crowded room, do you often have difficulty in following a conversation?',
+        '25) Are there very few things that you have ever enjoyed doing?',
+        '26) Are you much too independent to get involved with other people?',
+        '27) Do you love having your back massaged?',
+        '28) Do you find the bright lights of a city exciting to look at?',
+        '29) Do you feel very close to your friends?',
+        '30) Has dancing or the idea of it always seemed dull to you?',
+        "31) If you are paying attention to these questions, please select 'No' as your answer.", // !!!!!catch question in schizo number 31
+        '32) Do you like mixing with people?',
+        '33) Is trying new foods something you have always enjoyed?',
+        '34) Have you often felt uncomfortable when your friends touch you?',
+        '35) Do you prefer watching television to going out with people?',
 
-        '24) Are there very few things that you have ever enjoyed doing?',
-        '25) Are you much too independent to get involved with other people?',
-        '26) Do you love having your back massaged?',
-        '27) Do you find the bright lights of a city exciting to look at?',
-        '28) Do you feel very close to your friends?',
-        '29) Has dancing or the idea of it always seemed dull to you?',
-        "30) If you are paying attention to these questions, please select 'No' as your answer.", // !!!!!catch question in schizo number 30
-        '31) Do you like mixing with people?',
-        '32) Is trying new foods something you have always enjoyed?',
-        '33) Have you often felt uncomfortable when your friends touch you?',
-        '34) Do you prefer watching television to going out with people?',
+        '36) Do you consider yourself to be pretty much an average sort of person?',
+        '37) Would you like other people to be afraid of you?',
 
-        '35) Do you consider yourself to be pretty much an average sort of person?',
-        '36) Would you like other people to be afraid of you?',
-
-        "37) Do you often feel the impulse to spend money which you know you can't afford?",
-        '38) Are you usually in an average kind of mood, not too high and not too low?',
-        '39) Do you at times have an urge to do something harmful or shocking?',
-        '40) Do you stop to think things over before doing anything?',
-        '41) Do you often overindulge in alcohol or food?',
-        '42) Do you ever have the urge to break or smash things?',
-        '43) Have you ever felt the urge to injure yourself?',
-        '44) Do you often feel like doing the opposite of what other people suggest even though you know they are right?'];
+        "38) Do you often feel the impulse to spend money which you know you can't afford?",
+        '39) Are you usually in an average kind of mood, not too high and not too low?',
+        '40) Do you at times have an urge to do something harmful or shocking?',
+        '41) Do you stop to think things over before doing anything?',
+        '42) Do you often overindulge in alcohol or food?',
+        '43) Do you ever have the urge to break or smash things?',
+        '44) Have you ever felt the urge to injure yourself?',
+        '45) Do you often feel like doing the opposite of what other people suggest even though you know they are right?'];
 
 //schizo has 43 qns           
 var schizo_scale = ["No", "Yes"];
@@ -647,18 +642,23 @@ var schizo_scale = ["No", "Yes"];
     var schizo =       
     { type: "survey-multi-choiceOriginal",
     questions: schizo_qn,
-    options: [schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale],
-    required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
+    options: [schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale,schizo_scale],
+    required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     horizontal: true,
     preamble: ["<strong>Please read the statements and answer whether you agree or disagree with the statements with 'No' or 'Yes' ONLY.</strong>"],
     data:{label: 'schizo', trialType: 'quest'},
       on_finish: function(trial_data){
 
         var response = trial_data.responses;        
-        var patt =  /"Q29":"No"/i;
-        var result = response.match(patt);
+        var patt1 =  /"Q30":"No"/i;
+        var result1 = response.match(patt1);
+
+        var patt2 =  /"Q12":"Yes"/i;
+        var result2 = response.match(patt2);
   
-        if (result == null){
+
+
+        if (result1 == null || result2 == null){
 
           countFailedScreener += 1;
 
@@ -932,43 +932,27 @@ var  eat_qn =[' 1) I am terrified about being overweight.',
         '14) I am preoccupied with the thought of having fat on my body.',
         '15) I take longer than others to eat meals.',
         '16) I avoid foods with sugar in them.',
-        "17) If you are paying attention to these questions, please select 'Sometimes' as your answer.", // !!!!!catch question in eat number 17
-        '18) I eat diet foods.',
-        '19) I feel that food controls my life.',
-        '20) I display self-control around food.',
-        '21) I feel that others pressure me to eat.',
-        '22) I give too much time and thought to food.' ,
-        '23) I feel uncomfortable after eating sweets.',
-        '24) I engage in dieting behaviour.',
-        '25) I like my stomach to be empty.',
-        '26) I enjoy trying new rich foods.',
-        '27) I have the impulse to vomit after meals.'];
+        '17) I eat diet foods.',
+        '18) I feel that food controls my life.',
+        '19) I display self-control around food.',
+        '20) I feel that others pressure me to eat.',
+        '21) I give too much time and thought to food.' ,
+        '22) I feel uncomfortable after eating sweets.',
+        '23) I engage in dieting behaviour.',
+        '24) I like my stomach to be empty.',
+        '25) I enjoy trying new rich foods.',
+        '26) I have the impulse to vomit after meals.'];
 
 var eat_scale = [ "Always","Usually","Often","Sometimes","Rarely","Never"];
 
     var eat =      
     { type: "survey-multi-choiceOriginal",
     questions: eat_qn,
-    options: [eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale],
-    required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
+    options: [eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale,eat_scale],
+    required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     preamble: ['<strong>Please answer the questions below as accurately, honestly and completely as possible. There are no right or wrong answers.</strong>'],
     data:{label: 'eat', trialType: 'quest'},
-      on_finish: function(trial_data){
-
-        var response = trial_data.responses;        
-        var patt =  /"Q16":"Sometimes"/i;
-        var result = response.match(patt);
-  
-        if (result == null){
-
-          countFailedScreener += 1;
-
-            if(countFailedScreener >= 1){
-
-              //run pre-exit
-              failedScreeners();
-            }
-        }
+      on_finish: function(){
 
         jsPsych.setProgressBar(0.04); 
     }
@@ -1086,31 +1070,49 @@ var  anxiety_TMAS =[
         '34) I have periods of such great restlessness that I cannot sit long I a chair.',
         '35) Sometimes I become so excited that I find it hard to get to sleep.',
         '36) I have sometimes felt that difficulties were piling up so high that I could not overcome them.',
-        '37) I must admit that I have at times been worried beyond reason over something that really did not matter.',
-        '38) I have very few fears compared to my friends.',
-        '39) I have been afraid of things or people that I know could not hurt me.',
-        '40) I certainly feel useless at times.',
-        '41) I find it hard to keep my mind on a task or job.',
-        '42) I am usually self-conscious.',
-        '43) I am inclined to take things hard.',
-        '44) I am a high-strung person.',
-        '45) Life is a strain for me much of the time.',
-        '46) At times I think I am no good at all.',
-        '47) I am certainly lacking in self-confidence.',
-        '48) I sometimes feel that I am about to go to pieces.',
-        '49) I shrink from facing crisis or difficulty.',
-        '50) I am entirely self-confident.'];
+        "37) If you are paying attention to these questions, please select 'False' as your answer.",               // !!!!!catch question in eat number 37
+        '38) I must admit that I have at times been worried beyond reason over something that really did not matter.',
+        '39) I have very few fears compared to my friends.',
+        '40) I have been afraid of things or people that I know could not hurt me.',
+        '41) I certainly feel useless at times.',
+        '42) I find it hard to keep my mind on a task or job.',
+        '43) I am usually self-conscious.',
+        '44) I am inclined to take things hard.',
+        '45) I am a high-strung person.',
+        '46) Life is a strain for me much of the time.',
+        '47) At times I think I am no good at all.',
+        '48) I am certainly lacking in self-confidence.',
+        '49) I sometimes feel that I am about to go to pieces.',
+        '50) I shrink from facing crisis or difficulty.',
+        '51) I am entirely self-confident.'];
 
 var anxietyTMAS_scale = [ "True","False"];
 
     var anxietyTMAS =      
     { type: "survey-multi-choiceOriginal",
     questions: anxiety_TMAS,
-    options: [anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale],
-    required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
+    options: [anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale,anxietyTMAS_scale, anxietyTMAS_scale],
+    required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     preamble: ['<strong>Read each statement and select the appropriate response.</strong>'],
     data:{label: 'anxiety-TMAS', trialType: 'quest'},
-      on_finish: function(){
+      on_finish: function(trial_data){
+
+        var response = trial_data.responses;        
+        var patt =  /"Q36":"False"/i;
+        var result = response.match(patt);
+        
+        if (result == null){
+
+          countFailedScreener += 1;
+
+            if(countFailedScreener >= 1){
+
+              //run pre-exit
+            
+                failedScreeners();
+            }
+        }
+
         jsPsych.setProgressBar(0.07); 
     }
     };  
@@ -1142,8 +1144,9 @@ var daringnessCADS_scale = [ "Not at all","Just a little","Pretty much/pretty of
 //PUSH QUESTIONNAIRE INSTRUCTIONS
 qns.push(begin_qns);
 
-//, ocir, schizo, zungdep, lebsocial, icariq, genanxiety, apathy, eat, alcoholadd
-var questlist = [eat,schizo,ocir,bis]; //anxietyTMAS, bis, ocir, schizo, zungdep, lebsocial, icariq, genanxiety2, genanxiety1, apathy, eat, alcoholadd
+ 
+    //bis,ocir,schizo,zungdep,lebsocial,icariq,alcoholadd,apathy,eat,genanxiety2, genanxiety1, anxietyTMAS, daringnessCADS
+var questlist = [bis,ocir,schizo,zungdep,lebsocial,icariq,alcoholadd,apathy,eat,genanxiety2, genanxiety1, anxietyTMAS, daringnessCADS];
 var shufflequestlist  = jsPsych.randomization.shuffle(questlist);
 
 //PUSH THE QUESTIONNAIRES
@@ -1307,10 +1310,9 @@ var isItCaught = function(){
 //MAIN --> defining experiment structure
 
    
+  //welcome_message, entrySurvey_block,instruction_messageLevelOne
+var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne];
 
-var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne]; 
-
-    
 
      timeline = timeline.concat(comprehensionTestBlock1);
      timeline.push(level1Start);
@@ -1334,7 +1336,6 @@ var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne];
      timeline.push(rewardInformation);
      timeline.push(feedbackParticipant);
   
-
 
 jsPsych.init({
     display_element: $('#jspsych-target'),

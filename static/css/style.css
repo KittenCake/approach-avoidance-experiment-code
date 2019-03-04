@@ -25,8 +25,8 @@ strong {
 
 
 /* these are all the same for now, but easy to modify individually */
-#container-ad, #container-error, #container-exp, #container-consent, #container-instructions, #container-questionnaire {
-    position: absolute;
+#container-start, #container-error, #container-exp, #container-consent, #container-instructions, #container-questionnaire {
+    position: relative;
     top: 0px; /* Header Height */
     bottom: 0px; /* Footer Height */
     left: 0px;
@@ -47,7 +47,7 @@ strong {
 }
 
 /* ad.html  - the ad that people view first */
-#adlogo {
+#startlogo {
     float: right;
     width: 140px;
     padding: 2px;

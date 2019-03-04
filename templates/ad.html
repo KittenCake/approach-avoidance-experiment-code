@@ -21,6 +21,7 @@
 	<head>
 		<title>Psychology Experiment</title>
 		<link rel=stylesheet href="/static/css/bootstrap.min.css" type="text/css">
+		 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 		<style>
 			/* these tyles need to be defined locally */
 			body {
@@ -33,14 +34,14 @@
 			}
 
 			/* ad.html  - the ad that people view first */
-			#adlogo {
+			#startlogo {
 			    float: right;
 			    width: 140px;
 			    padding: 2px;
 			    border: 1px solid #ccc;
 			}
 
-			#container-ad {
+			#container-start {
 			    position: absolute;
 			    top: 0px; /* Header Height */
 			    bottom: 0px; /* Footer Height */
@@ -54,13 +55,13 @@
 		</style>
 	</head>
 	<body>
-		<div id="container-ad">
+		<div id="container-start">
 
-			<div id="ad">
+			<div id="start">
 				<div class="row">
 					<div class="col-xs-2">
 						<!-- REPLACE THE LOGO HERE WITH YOUR  UNIVERSITY, LAB, or COMPANY -->
-						<img id="adlogo" src="{{ server_location }}/static/images/university.png" alt="Lab Logo" />
+						<img id="startlogo" src="{{ server_location }}/static/images/university.png" alt="Lab Logo" />
 					</div>
 					<div class="col-xs-10">
 
@@ -123,7 +124,7 @@
 							       If you close the experiment window, you won't be able to begin the experiment again.
 							       In that case please return the HIT so someone else can perform the experiment.
 							    </p>
-							    <script>
+							    <script type="text/javascript">
 									function openwindow() {
 							    		popup = window.open('{{ server_location }}/consent?hitId={{ hitid }}&assignmentId={{ assignmentid }}&workerId={{ workerid }}','Popup','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=no,width='+1024+',height='+768+'');
 							  		}
