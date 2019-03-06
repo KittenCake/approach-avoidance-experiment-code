@@ -10,7 +10,7 @@ ad_group = jsPsych psiTurk Approach avoidcance
 psiturk_keywords = Web Approach Avoidance
 organization_name = BachLab University of Zurich
 browser_exclude_rule = MSIE, mobile, tablet
-allow_repeats = true
+allow_repeats = false
 
 [Database Parameters]
 database_url = mysql://pmisala:5Tbp2YgvXsNW@approach-avoidance-test6/approachAvoidance
@@ -28,7 +28,7 @@ login_pw = root
 threads = auto
 
 [Task Parameters]
-experiment_code_version = Pilot code version: 1.1
+experiment_code_version = Pilot code version: 2.0
 num_conds = 1
 num_counters = 1
 

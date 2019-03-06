@@ -536,7 +536,7 @@ var bis_scale = ["Do not agree at all",  "Agree slightly", "Agree a lot",  "Agre
     data:{label: 'bis', trialType: 'quest'},
       on_finish: function(){
 
-        jsPsych.setProgressBar(0.05); 
+        jsPsych.setProgressBar(0.04); 
     }
     };
 
@@ -580,7 +580,7 @@ var ocir_qn = ['1) I have saved up so many things that they get in the way. ',
     data:{label: 'ocir', trialType: 'quest'},
       on_finish: function(){
 
-        jsPsych.setProgressBar(0.04); 
+        jsPsych.setProgressBar(0.03); 
     }
     };
 
@@ -669,7 +669,7 @@ var schizo_scale = ["No", "Yes"];
             }
         }
 
-        jsPsych.setProgressBar(0.06); 
+        jsPsych.setProgressBar(0.04); 
     }
     };
 
@@ -710,7 +710,7 @@ var zung_scale = ["A little of the time",  "Some of the time", "Good part of the
     preamble : ['<strong>Please read each statement and decide HOW MUCH of the time the statement describes how you have been feeling during the PAST SEVERAL DAYS.</strong>'],
     data:{label: 'depress', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.04); 
+        jsPsych.setProgressBar(0.03); 
     }
     };
 
@@ -782,7 +782,7 @@ var lebsocial_scale2 = [ "Never (0%)" ,"Occasionally (1—33%)", "Often (33—67
     preamble: ['<strong>Read each bolded statement carefully and answer two questions about that statement. The first question asks how ANXIOUS or FEARFUL you feel in that situation. The second question asks how often you AVOID that situation. Please base your ratings on the way that the situations have affected you in the LAST WEEK.</strong>'],
     data:{label: 'social', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.04); 
+        jsPsych.setProgressBar(0.03); 
     }
     };
 
@@ -845,7 +845,7 @@ var iq_scale10 = ["A" ,"B", "C", "D" , "E", "F","G","H"];
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     data:{label: 'iq', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.08); 
+        jsPsych.setProgressBar(0.18); 
     }
     };
     
@@ -876,7 +876,7 @@ var alcohol_scale4 = [ "No","Yes, but not in the last year","Yes, during the las
     preamble: ['<strong>Now we are going to ask you some questions about your use of alcoholic beverages during the past year. Please try to be as honest and as accurate as you can be.</strong>'],
     data:{label: 'alcohol', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.03); 
+        jsPsych.setProgressBar(0.02); 
     }
     };
     
@@ -910,7 +910,7 @@ var apathy_scale = [ "Not at all characteristic","Slightly characteristic","Some
     preamble: ['<strong>For each question, choose the answer that best describes your thoughts, feelings, and actions during the past 4 weeks.</strong>'],
     data:{label: 'apathy', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.03); 
+        jsPsych.setProgressBar(0.02);
     }
     };
 
@@ -1028,7 +1028,7 @@ var anxiety1_scale = [ "Not at all","Somewhat","Moderately so","Very much so"];
     preamble: ['<strong>Read each statement and select the appropriate response to indicate how you feel right now, that is, at this very moment. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
     data:{label: 'anxiety-Y1', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.03); 
+        jsPsych.setProgressBar(0.02); 
     }
     };  
 
@@ -1113,7 +1113,7 @@ var anxietyTMAS_scale = [ "True","False"];
             }
         }
 
-        jsPsych.setProgressBar(0.07); 
+        jsPsych.setProgressBar(0.05); 
     }
     };  
 
@@ -1310,7 +1310,6 @@ var isItCaught = function(){
 //MAIN --> defining experiment structure
 
    
-  //welcome_message, entrySurvey_block,instruction_messageLevelOne
 var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne];
 
 
