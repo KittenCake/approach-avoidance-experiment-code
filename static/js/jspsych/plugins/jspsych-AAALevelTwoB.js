@@ -381,8 +381,10 @@ function playerGetsCaught (){   // add  remover of everything else or freeze or 
 function eventListenerReference(event){ // Handles keyboard input from the player
 
   
-  if(event.keyCode == 38 && trial.playerIndex == 0 && trial.catchTries > 0) { //  left-arrow
+  if(event.keyCode == 38 && trial.playerIndex == 0 && trial.catchTries > 0) { //  up-arrow
           
+        if(trial.tokkenCount < 6){
+
                  robberActivation();
 
                  trial.robberTrackDict.push({
@@ -453,6 +455,7 @@ function eventListenerReference(event){ // Handles keyboard input from the playe
                                                                                                        
                     }
                   }
+              }
 
 };
 

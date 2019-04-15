@@ -1309,11 +1309,11 @@ var isItCaught = function(){
 
 //MAIN --> defining experiment structure
 
-   
+                
 var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne];
 
-
-     timeline = timeline.concat(comprehensionTestBlock1);
+    
+  timeline = timeline.concat(comprehensionTestBlock1);
      timeline.push(level1Start);
      timeline = timeline.concat(levelOneListA);
      timeline.push(break_messageLvlOneA);
@@ -1334,7 +1334,7 @@ var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne];
      timeline.push(rewardCalc);
      timeline.push(rewardInformation);
      timeline.push(feedbackParticipant);
-  
+     
 
 jsPsych.init({
     display_element: $('#jspsych-target'),
