@@ -1305,7 +1305,23 @@ var isItCaught = function(){
     }
 };
 
- 
+
+nrOfTimesOutFocus = 0;
+function checkPageFocus() { // checks whether the participant has experiment in focus / if he alt+tabs away /or anything out of focus an alert is given
+  
+  let body = document.querySelector('body');
+
+  if (document.hasFocus()) {
+    
+    //as long as in focus do nothing
+  }
+  else {
+    nrOfTimesOutFocus += 1;
+    alert('Please stay focused on the experiment and do not switch window or application');
+  }
+};
+
+
 
 //MAIN --> defining experiment structure
 
@@ -1313,7 +1329,7 @@ var isItCaught = function(){
 var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne];
 
     
-  timeline = timeline.concat(comprehensionTestBlock1);
+     timeline = timeline.concat(comprehensionTestBlock1);
      timeline.push(level1Start);
      timeline = timeline.concat(levelOneListA);
      timeline.push(break_messageLvlOneA);
@@ -1346,23 +1362,24 @@ jsPsych.init({
     // record data to psiTurk after each trial
     on_data_update: function(data) {
         psiturk.recordTrialData(data);
-
+        setInterval(checkPageFocus, 300);
     },
 
     on_finish: function() {
 
+    
+    jsPsych.data.addProperties({NrOfTimesOutOfFocus: nrOfTimesOutFocus});
 
     //save data
     psiturk.saveData({
 
     success: function() { 
-      // function to run if the data is saved
+       //function to run if the data is saved
 
        psiturk.computeBonus('compute_bonus', function() { 
 
-            psiturk.completeHIT(); }); // when finished saving compute bonus...quit
-
-     
+           psiturk.completeHIT(); }); // when finished saving compute bonus...quit
+ 
    },
     error: function() { 
       // function to run if there was an error
