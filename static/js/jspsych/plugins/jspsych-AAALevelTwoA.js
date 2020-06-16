@@ -55,10 +55,12 @@ var keyHandler = function(event) {
   trial.robberTrackColLamDict = [];      // robber color  --> 0 = azure , 1 = yellow , 2 = purple
   
 
-  tokkenExp = Prob.exponential(1.25);  // generating random exponential number with lambda 1.25 via tokkenExp(); ----> not sure if has to be trial too
+  // Generates random numbers following the Gamma distribution.
+  var gammaFirstDraw = jStat.gamma.sample(2,1);
+  trial.currentTime = Math.min(Math.max(parseInt(gammaFirstDraw), gammaFirstDraw), 6);
+
  
-  trial.currentTime = 0;
-  trial.timeAbsendFixed = 0.7;  //  500ms  --> Times in array * 1000
+  trial.timeAbsendFixed = 1;   //  1sec 
 
   trial.appearTokkenTime = [];
   trial.dissapearTokkenTime = [];
@@ -66,17 +68,22 @@ var keyHandler = function(event) {
 
 // fill the appearTokkenTimes and dissapearTokkenTimes with the random popUp/Out times. 
 
-for (i = 0; i <= trial.numberOfTokkens; i++) {
+for (i = 0; i < trial.numberOfTokkens; i++) {
 
-trial.timePresent = tokkenExp();
-trial.timeAbsendVariable = tokkenExp();
 
-trial.appearTokkenTime.push(trial.currentTime);
-trial.currentTime += trial.timePresent;
+  var gammaX = jStat.gamma.sample(2,1);
+  trial.timePresent = Math.min(Math.max(parseInt(gammaX), gammaX), 6);
 
-trial.dissapearTokkenTime.push(trial.currentTime);
-trial.currentTime += trial.timeAbsendFixed;
-trial.currentTime += trial.timeAbsendVariable;
+  var gammaY = jStat.gamma.sample(2,1);
+  trial.timeAbsendVariable = Math.min(Math.max(parseInt(gammaY), gammaY), 6);
+
+  trial.appearTokkenTime.push(trial.currentTime);
+  trial.currentTime += trial.timePresent;
+
+  trial.dissapearTokkenTime.push(trial.currentTime);
+  trial.currentTime += trial.timeAbsendFixed;
+  trial.currentTime += trial.timeAbsendVariable;
+
 
 };
 
@@ -641,8 +648,17 @@ if (trial.tokkenCount == 6 && trial.finishNormal == true){
            "playerCaughtTrackDict": JSON.stringify(trial.playerCaughtTrackDict)
       };
 
+  // truncated at 4 sec.
 
-        setTimeout(function() { display_element.html('');resetDom(); document.removeEventListener('keydown', keyHandler);checkFullscreen(trial_data);}, 1500);
+      var interceptX = jStat.gamma.sample(2,1);
+
+      //random intertrial interval
+      drawnInterceptInterval = Math.min(Math.max(parseInt(interceptX), interceptX), 4)*1000;
+     
+      setTimeout(function(){document.removeEventListener('keydown', keyHandler);resetDom();}, 1000);
+
+      setTimeout(function(){checkFullscreen(trial_data);}, drawnInterceptInterval + 1000);
+    
   }
 };
 
@@ -672,8 +688,15 @@ if (trial.tokkenCount == 6 && trial.finishNormal == true){
       
       display_element.append('<div style= "text-align:left;left:250px;top:425px;position: absolute;"> please wait... </div>'); 
 
+      // truncated at 4 sec.
+      var interceptX = jStat.gamma.sample(2,1);
+      drawnInterceptInterval = Math.min(Math.max(parseInt(interceptX), interceptX), 4)*1000;
+      var remainingTokenTime = (trial.dissapearTokkenTime[5]*1000) - ((new Date()).getTime() - trial.startTime)
 
-     setTimeout(function() { display_element.html('');resetDom();checkFullscreen(trial_data);},(trial.dissapearTokkenTime[6]*1000) - ((new Date()).getTime() - trial.startTime) + 1500);
+     setTimeout(function() {display_element.html('');}, remainingTokenTime);
+    
+     setTimeout(function() {checkFullscreen(trial_data);},remainingTokenTime + drawnInterceptInterval);
+
   }
     };
 

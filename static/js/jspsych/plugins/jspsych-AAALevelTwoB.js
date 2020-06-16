@@ -69,10 +69,11 @@ trial = jsPsych.pluginAPI.evaluateFunctionParameters(trial);
   trial.caughtRobberDict = [];      // key: player location value : time
 
 
-  tokkenExp = Prob.exponential(1.25);  // generating random exponential number with lambda 1.25 via tokkenExp(); ----> not sure if has to be trial too
- 
-  trial.currentTime = 0;
-  trial.timeAbsendFixed = 0.5;  //  500ms  --> Times in array * 1000
+    // Generates random numbers following the Gamma distribution.
+  var gammaFirstDraw = jStat.gamma.sample(2,1);
+  trial.currentTime = Math.min(Math.max(parseInt(gammaFirstDraw), gammaFirstDraw), 6);
+
+  trial.timeAbsendFixed =  1;   //  1sec 
 
   trial.appearTokkenTime = [];
   trial.dissapearTokkenTime = [];
@@ -82,15 +83,19 @@ trial = jsPsych.pluginAPI.evaluateFunctionParameters(trial);
 
 for (i = 0; i <= trial.numberOfTokkens; i++) {
 
-trial.timePresent = tokkenExp();
-trial.timeAbsendVariable = tokkenExp();
+  var gammaX = jStat.gamma.sample(2,1);
+  trial.timePresent = Math.min(Math.max(parseInt(gammaX), gammaX), 6);
 
-trial.appearTokkenTime.push(trial.currentTime);
-trial.currentTime += trial.timePresent;
+  var gammaY = jStat.gamma.sample(2,1);
+  trial.timeAbsendVariable = Math.min(Math.max(parseInt(gammaY), gammaY), 6);
 
-trial.dissapearTokkenTime.push(trial.currentTime);
-trial.currentTime += trial.timeAbsendFixed;
-trial.currentTime += trial.timeAbsendVariable;
+  trial.appearTokkenTime.push(trial.currentTime);
+  trial.currentTime += trial.timePresent;
+
+  trial.dissapearTokkenTime.push(trial.currentTime);
+  trial.currentTime += trial.timeAbsendFixed;
+  trial.currentTime += trial.timeAbsendVariable;
+
 
 };
 
@@ -381,10 +386,8 @@ function playerGetsCaught (){   // add  remover of everything else or freeze or 
 function eventListenerReference(event){ // Handles keyboard input from the player
 
   
-  if(event.keyCode == 38 && trial.playerIndex == 0 && trial.catchTries > 0) { //  up-arrow
+  if(event.keyCode == 38 && trial.playerIndex == 0 && trial.catchTries > 0) { //  left-arrow
           
-        if(trial.tokkenCount < 6){
-
                  robberActivation();
 
                  trial.robberTrackDict.push({
@@ -455,7 +458,6 @@ function eventListenerReference(event){ // Handles keyboard input from the playe
                                                                                                        
                     }
                   }
-              }
 
 };
 
@@ -500,7 +502,17 @@ if (trial.tokkenCount == 6 && trial.finishNormal == true){
       };
 
 
-    setTimeout(function() {display_element.html(''); resetDom();checkFullscreen(trial_data); document.removeEventListener('keydown', keyHandler);}, 1500);
+    // truncated at 4 sec.
+
+      var interceptX = jStat.gamma.sample(2,1);
+
+      //random intertrial interval
+      drawnInterceptInterval = Math.min(Math.max(parseInt(interceptX), interceptX), 4)*1000;
+     
+      setTimeout(function(){document.removeEventListener('keydown', keyHandler);resetDom();}, 1000);
+
+      setTimeout(function(){checkFullscreen(trial_data);}, drawnInterceptInterval + 1000);
+    
   }
 };
 
