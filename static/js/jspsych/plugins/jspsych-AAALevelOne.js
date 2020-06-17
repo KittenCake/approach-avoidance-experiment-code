@@ -112,15 +112,11 @@ trial.currentCRobberTime = 0;
   trial.BRobberTimings = [];
   trial.CRobberTimings = [];
 
-  trial.ARobberTimings.push(trial.currentARobberTime);
-  trial.BRobberTimings.push(trial.currentBRobberTime);
-  trial.CRobberTimings.push(trial.currentCRobberTime);
 
   trial.robberTimeTable = [trial.ARobberTimings, trial.BRobberTimings, trial.CRobberTimings];  // 0 = a(λ = 1.0536) 1 = b(λ = 3.5667) 2 = c(λ = 2.2314)
 
 
-
-for (i = 0; i <= 100; i++){  
+for (i = 0; i <= 149; i++){  
 
 
   trial.timePresentA = ARobberExp();
