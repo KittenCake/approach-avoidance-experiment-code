@@ -21,14 +21,20 @@ plugin.trial = function(display_element, trial){        // for every trial shoul
   //trial variables
 
   trial.players = ['/static/images/imageTokken.jpeg','/static/images/imageSleepingRobber.jpeg','/static/images/imagePlayer.jpeg', '/static/images/imageCatchRobberRed.jpeg'];
-  trial.grid = ['/static/images/azureFrame.jpeg','/static/images/yellowFrame.jpeg','/static/images/purpleFrame.jpeg'];
+  trial.grid = ['/static/images/azureFrame.jpeg','/static/images/yellowFrame.jpeg','/static/images/purpleFrame.jpeg','/static/images/purpleFrame.jpeg','/static/images/potentialLossGrid.jpeg'];
+  trial.potentialLosT =['','/static/images/potentialLossToken.jpeg','/static/images/TwoLostTokens.jpeg','/static/images/ThreeLostTokens.jpeg','/static/images/FourLostTokens.jpeg','/static/images/FiveLostTokens.jpeg'];
+  trial.potentialLostId =['','jspych-AAAPotentialLossToken','jspych-AAATwoPotentialLossTokens','jspych-AAAThreePotentialLossTokens','jspych-AAAFourPotentialLossTokens','jspych-AAAFivePotentialLossTokens'];
+  trial.lostTokenId = ['','jspych-AAAOneLostToken','jspych-AAATwoLostTokens','jspych-AAAThreeLostTokens','jspych-AAAFourLostTokens','jspych-AAAFiveLostTokens'];
   trial.stringifyLambda = ["λ = 1.0536", "λ = 3.5667","λ = 2.2314"];   
   trial.stringifyRColor = ["azure", "yellow","purple"];
   trial.shuffledLambda = trial.shuffledLambda;        // randomized lambda array "parameter"
   trial.robberColor = trial.robberColor;         // robberColor array "parameter"
+  trial.potentialLoss = trial.potentialLoss;
   trial.wonTokkenCounter = 0;
   trial.numberOfTokkens = 1; // one token per trial policy
   trial.tokkenCount = 0;
+ 
+  console.log(trial.potentialLoss);
 
   trial.robberActive = false;                           // determines wether robber is currently active or not
 
@@ -348,6 +354,14 @@ function spawnRobber (){                                        // activates the
         id: 'jspych-AAAGrid'}));
 
         display_element.append($('<img>', {
+        src: trial.grid[4],
+        id: 'jspych-AAAPotentialLossGrid'}));
+        
+        
+        spawnPotentialLossTokens(trial.potentialLoss);
+        
+       
+        display_element.append($('<img>', {
         src: trial.players[1],
         id: 'jspych-AAAMiddleRobber'}));   // spawns one default robber in the top grid
 
@@ -362,19 +376,37 @@ function spawnRobber (){                                        // activates the
 };
 
 
-function spawnWonTokkens (){    // spawn them next to each other maybe have to hardcode with 6 tokkens. 
+function spawnWonTokkens (){    // spawn them next to each other maybe have to hardcode with 6 tokkens. -- Additionally used to spawn potentialLossTokens 
 
     trial.wonTokkenCounter += 1;
     display_element.append($('<img>', {
     src: trial.players[0],
     id: 'jspych-AAAWonTokkens'}));
- 
-
 };
+
+
+function spawnPotentialLossTokens (potentialLoss){    //spawn potentialLossTokens 
+
+  if(potentialLoss != 0){
+    display_element.append($('<img>', {
+    src: trial.potentialLosT[potentialLoss],
+    id:   trial.potentialLostId[potentialLoss]}));
+    };}
+
+function spawnLostTokens (potentialLoss){    //spawn potentialLossTokens 
+
+  if(potentialLoss != 0){
+    display_element.append($('<img>', {
+    src: trial.potentialLosT[potentialLoss],
+    id:  trial.lostTokenId[potentialLoss]}));
+    };} 
 
 
 function playerGetsCaught (){   // add  remover of everything else or freeze or just lay a new grid over everything and sett variables to 0 tokkens etc. let timer count down to total 20s
 
+     
+   spawnLostTokens(trial.potentialLoss);
+    
    trial.wonTokkenCounter = 0;
    
    trial.robberTimeouts.forEach(function(timer) { // clears remainig Timeouts for robber
@@ -395,6 +427,7 @@ function playerGetsCaught (){   // add  remover of everything else or freeze or 
         src: trial.players[3],
         id: 'jspych-AAAActiveLeftRobber'}));
 
+    
 
        finishingTrialCaught();
 
@@ -444,7 +477,8 @@ function playerGetsCaught (){   // add  remover of everything else or freeze or 
         while(document.body.contains(document.getElementById('jspych-AAAWonTokkens')) == true){
 
         var tokkenRemove = document.getElementById('jspych-AAAWonTokkens');
-        tokkenRemove.parentNode.removeChild(tokkenRemove);}
+        tokkenRemove.parentNode.removeChild(tokkenRemove);
+        }
 
 
         if(document.body.contains(document.getElementById('jspych-AAATokkenLeft')) == true || document.body.contains(document.getElementById('jspych-AAATokkenRight')) == true){
@@ -634,8 +668,9 @@ if (trial.tokkenCount == 1 && trial.finishNormal == true){
       
 
       var trial_data = {
-
+ 
            "robberTrackColLamDict": JSON.stringify(trial.robberTrackColLamDict),
+           "potentialTokenLoss": JSON.stringify(trial.potentialLoss),
            "robberTrackArr": JSON.stringify(trial.robberTrackArr),
            "tokkenTrackDict": JSON.stringify(trial.tokkenTrackDict),
            "playerTrackDict": JSON.stringify(trial.playerTrackDict),
@@ -671,6 +706,8 @@ if (trial.tokkenCount == 1 && trial.finishNormal == true){
      var trial_data = {
 
            "robberTrackColLamDict": JSON.stringify(trial.robberTrackColLamDict),
+           "potentialTokenLoss": JSON.stringify(trial.potentialLoss),
+           "TokenLost": JSON.stringify(trial.potentialLoss),
            "robberTrackArr": JSON.stringify(trial.robberTrackArr),
            "tokkenTrackDict": JSON.stringify(trial.tokkenTrackDict),
            "playerTrackDict": JSON.stringify(trial.playerTrackDict),

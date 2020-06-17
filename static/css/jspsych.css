@@ -353,7 +353,7 @@ label.jspsych-survey-multi-choice-text input[type="radio"] {
 
   display: inline-block;
   right: 488px;
-  top: 200px;
+  top: 274px;
   position: absolute;
 }
 
@@ -361,7 +361,7 @@ label.jspsych-survey-multi-choice-text input[type="radio"] {
 
   display: inline-block;
   left: 493px;
-  top: 200px;
+  top: 274px;
   position: absolute;
 }
 
@@ -369,7 +369,7 @@ label.jspsych-survey-multi-choice-text input[type="radio"] {
 
   display: inline-block;
   left: 570px;
-  top: 284px;
+  top: 356px;
   position: absolute;
 }
 
@@ -377,7 +377,7 @@ label.jspsych-survey-multi-choice-text input[type="radio"] {
 
   display: inline-block;
   left: 488px ;
-  top: 200px;
+  top: 275px;
   position: absolute;
   z-index: 1;
 }
@@ -385,7 +385,7 @@ label.jspsych-survey-multi-choice-text input[type="radio"] {
 
   display: inline-block;
   right: 482px;
-  top: 200px;
+  top: 275px;
   position: absolute;
   z-index: 1;
 }
@@ -404,7 +404,7 @@ label.jspsych-survey-multi-choice-text input[type="radio"] {
 
   display:inline-block;
   left: 560px;
-  top: 122px;
+  top: 199px;
   position: absolute;
 }
 
@@ -454,7 +454,7 @@ label.jspsych-survey-multi-choice-text input[type="radio"] {
 
   display:inline-block;
   left: 478px;
-  top: 202px;
+  top: 278px;
   position: absolute;
   z-index: 1;
   
@@ -464,7 +464,7 @@ label.jspsych-survey-multi-choice-text input[type="radio"] {
 
   display:inline-block;
   right: 473px;
-  top: 202px;
+  top: 278px;
   position: absolute;
   z-index: 1;
 
@@ -473,20 +473,128 @@ label.jspsych-survey-multi-choice-text input[type="radio"] {
 #jspych-AAAWonTokkens {
 
  display: inline-block;
- margin-right: 3px;
  float: left;
+ left: 48%;
+ top: -40px;
+ position: absolute;
+}
+
+#jspych-AAAOneLostToken {
+
+ display: inline-block;
+ float: left;
+ left: 38%;
+ top: -40px;
  position: relative;
 }
 
+#jspych-AAATwoLostTokens {
+
+  display: inline-block;
+ margin-right: 19px;
+ float: left;
+ left: 26%;
+ top: -40px;
+ position: relative;
+}
+
+#jspych-AAAThreeLostTokens {
+
+  display: inline-block;
+ margin-right: 19px;
+ float: left;
+ left: 14.8%;
+ top: -40px;
+ position: relative;
+}
+
+#jspych-AAAFourLostTokens {
+
+  display: inline-block;
+ margin-right: 19px;
+ float: left;
+ left: 3%;
+ top: -40px;
+ position: relative;
+}
+
+#jspych-AAAFiveLostTokens {
+
+  display: inline-block;
+ margin-right: 19px;
+ float: left;
+ left: -8%;
+ top: -40px;
+ position: relative;
+}
+
+
+#jspych-AAAPotentialLossToken {
+
+ display: inline-block;
+ margin-right: 65px;
+ float: left;
+ left: 48%;
+ top: 594px;
+ position: relative;
+}
+
+#jspych-AAATwoPotentialLossTokens {
+
+ display: inline-block;
+ margin-right: 65px;
+ float: left;
+ left: 44%;
+ top: 594px;
+ position: relative;
+}
+
+#jspych-AAAThreePotentialLossTokens {
+
+ display: inline-block;
+ margin-right: 65px;
+ float: left;
+ left: 40%;
+ top: 594px;
+ position: relative;
+}
+
+#jspych-AAAFourPotentialLossTokens {
+
+ display: inline-block;
+ margin-right: 65px;
+ float: left;
+ left: 36%;
+ top: 594px;
+ position: relative;
+}
+
+#jspych-AAAFivePotentialLossTokens {
+
+ display: inline-block;
+ margin-right: 65px;
+ float: left;
+ left: 32.6%;
+ top: 594px;
+ position: relative;
+}
 
 #jspych-AAAGrid {
 
   display: inline-block;
   left: 30%;
-  top: 50%;
+  top: 75px;
   position: absolute;
 }
 
+#jspych-AAAPotentialLossGrid {
+
+  display: inline-block;
+  left: 25%;
+  top: 580px;
+  max-width: 50%;
+  position: absolute;
+}
 
 #jspych-comprehend {
 
