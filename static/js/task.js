@@ -68,6 +68,39 @@ var instruction_messageLevelOne = {
     } // experiment instructions 
 };
 
+var instruction_messageAlternateVersionLevelOne = {
+
+    type: 'instructions',
+    pages: [ 'Please read following instructions carefully. <BR/> Now you will be collecting tokens in an easy computer game. Your task is to win and to avoid losing as many tokens as possible - in each round of the game.',
+
+    'In each round you will see a playing board with 4 fields. The green triangle - that is you. You are in a "safe square" - it is dark gray and you can\'t be caught by the robber in it. Right across from you sits a sleeping "robber". There are three different types of robbers in this game. They are all gray - but the frame color is different for each of them: yellow, purple or cyan-blue (like here). These "robbers" are differently dangerous. It is important  that you learn how the robbers differ from each other - and that you adapt your strategy to it. <BR/> <BR/> <img src="/static/images/instructionsAlternateLevelOne1.jpeg"></img>',
+    
+    'Below the playing board you can see how many tokens you could lose each round. In the following picture for example you see a yellow robber from which you could lose two tokens if you get caught. <BR/> <BR/> <img src="/static/images/instructionsAlternateLevelOne2.jpeg"></img>',
+
+    'Here you could lose one token from a purple robber. <BR/> <BR/> <img src="/static/images/instructionsAlternateLevelOne3.jpeg"></img>',
+
+    'From time to time yellow tokens pop up in the left or right white empty squares. The tokens disappear after some time. To collect a token, move to the token and back onto the "safe square" by pressing the arrow keys of your keyboard (right/left). You can only move left and right, and not reach the field where the robber sleeps.',
+
+    'In the following picture you see a round with a yellow robber. Just now a token appeared. <BR/> <BR/> <img src="/static/images/instructionsAlternateLevelOne4.jpeg"></img>', 
+
+    'Once you collected it, it appears on the top part of the playing board like here with a purple robber. <BR/> <BR/> <img src="/static/images/instructionsAlternateLevelOne5.jpeg"></img>',
+
+    'However: the sleeping robber can wake up at any time and attack you, if you are outside of the safe square. If this happens you will lose your life - the round ends - and you lose the below displayed amount of tokens.  <BR/> <BR/> <img src="/static/images/instructionsAlternateLevelOne6.jpeg"></img>',
+
+    'Try to avoid this. Remember: your task is to catch the token in each round without losing any. If you get attacked, you lose tokens. With time you will get a feeling for how fast tokens are appearing and disappearing. And what is most important, a feeling for how often the different robbers will awake and attack you.',
+
+    'Please keep in mind, that you can lose many tokens if you get caught.<BR/> If you want to prevent that, just stay in the safe square and do not catch new tokens.<BR/> It is important that the robbers are not equally dangerous and that you should adjust your strategy.',
+
+    'By the way: whether you collect a token or not - the next token will not appear any faster or slower. Therefore you cannot shorten the experiment with your strategy. <BR/> <BR/> At the end of the experiment <b>six</b> rounds are elected randomly. <BR/> For each round in which you collected the token, you will receive an extra $2 on top of the fixed $10 participation payment for each token won or lost in these rounds. <BR/> <BR/> If you are really unlucky and you have lost a lot of tokens in that elected round, you will not receive any extra amount of money. To prevent that, keep in mind to not get caught by the robber.',
+
+    '<BR/> <BR/> What follows now is a short comprehension test. Please, click next to start.'],
+
+    show_clickable_nav: true,
+    on_finish: function(){
+        jsPsych.setProgressBar(0.02); 
+    } // experiment instructions 
+};
+
 
 var instruction_messageLevelTwo = {
 
@@ -95,7 +128,7 @@ var instruction_messageLevelTwo = {
 var level1Start = {
 
   type: "text",
-  text: "Level 1 has 45 rounds and takes around 13 mins to finish with 2 breaks.<BR/>  <BR/> press spacebar to start",
+  text: "This part of the experiment has 144 rounds and takes around 20 mins to finish with 1 break.<BR/>  <BR/> press spacebar to start",
   timing_post_trial: 2000,
   on_finish: function(){
         jsPsych.setProgressBar(0.01); 
@@ -176,7 +209,7 @@ var surveyPost_Test3 = {
 var break_messageLvlOneA = {
 
   type: "text",
-  text: "First period out of three completed. <BR/>  short break, press any key to continue",
+  text: "First period out of two completed. <BR/>  short break, press any key to continue",
   on_finish: function(){
         jsPsych.setProgressBar(0.005); 
     }
@@ -215,12 +248,20 @@ var robberColor = [0,1,2];
 
 // different variations of levels A-C allows you to define the exact number of robber of a certain color -> with lambda being randomized. 
 
+// Trial Constellation for one token trial version of avoid approach exp.  3 (threat level) x 6 (token loss) = 18 conditions (trial types)
+
+var levelOneSingleTokenTrial = [];
+
+for(i = 0; i <= 5; i++){ // 18 Trials - 18 Conditions
+
+  
 //levelOne catch diamonds Color A-C
 var levelOneA = {
 
   type: "AAALevelOne",
   shuffledLambda: shuffledRobberLambda,
   robberColor: robberColor[0],
+  potentialLoss: i,
     on_finish: function(){
         jsPsych.setProgressBar(0.004); 
     }
@@ -231,6 +272,7 @@ var levelOneB = {
   type: "AAALevelOne",
   shuffledLambda: shuffledRobberLambda,
   robberColor: robberColor[1],
+  potentialLoss: i,
    on_finish: function(){
         jsPsych.setProgressBar(0.004); 
     }
@@ -241,10 +283,20 @@ var levelOneC = {
   type: "AAALevelOne",
   shuffledLambda: shuffledRobberLambda,
   robberColor: robberColor[2],
+  potentialLoss: i,
    on_finish: function(){
         jsPsych.setProgressBar(0.004); 
     }
+  
 };
+  levelOneSingleTokenTrial.push(levelOneA);
+  levelOneSingleTokenTrial.push(levelOneB);
+  levelOneSingleTokenTrial.push(levelOneC);
+}; 
+
+//randomizeSingleTrial -- Adjust number of trials here repeat N-times number of trial
+var randomizedLevelOneSingleTokenTrialFirstPart = jsPsych.randomization.repeat(levelOneSingleTokenTrial,4); 
+var randomizedLevelOneSingleTokenTrialSecondPart = jsPsych.randomization.repeat(levelOneSingleTokenTrial,4); 
 
 //levelTwo catch diamonds Color A-C
 var levelTwoA = {
@@ -342,6 +394,31 @@ var comprTest1 =
         jsPsych.setProgressBar(0.01); 
     }};
 
+//part one of experiment -- Update version one token per trial
+var comprQn1Updated = ['1) Up to how many tokens can you collect in one round?',
+              '2)  How many tokens can you lose in the following situation? <img id="jspych-comprehend" src="/static/images/potentialLossComprehensionTest.jpeg"></img>',
+              '3)  Are all robbers equally dangerous?',
+              '4)  Is it possible in this moment to get caught by the robber? <img id="jspych-comprehend" src="/static/images/instructionsAlternateLevelOne3.jpeg"></img>',
+              '5)  What happened here?  <BR/> <BR/> <img id="jspych-comprehend" src="/static/images/instructionsAlternateLevelOne6.jpeg"></img>'];
+                                            
+
+var comprScale1Updated = ["2","5","1","8"];
+var comprScale2Updated = ["3","5","1","6"];
+var comprScale3Updated = ["Yes", "No", "We don't know"];
+var comprScale4Updated = ["Yes (I am outside the safe square)", "No (I am inside the safe square)", "We don’t know"];
+var comprScale5Updated = ["I got caught by the robber", "I won a token", "I caught the robber"];
+
+var comprTest1Updated =      
+    { type: "survey-multi-choiceOriginal",
+    questions: comprQn1Updated,
+    preamble: ['<strong>Please read each question carefully and answer it </strong>'],
+    options: [comprScale1Updated, comprScale2Updated, comprScale3Updated, comprScale4Updated, comprScale5Updated],
+    required: [true, true, true, true, true],
+    data:{label: 'compr1', trialType: 'quest'},
+    on_finish: function(){
+        jsPsych.setProgressBar(0.01); 
+    }};
+
 
 // part two of experiment
   var comprQn2 = ['1) What is your task in this situation? <img id="jspych-comprehend" src="/static/images/comprehend2.1.jpeg"></img>',
@@ -384,6 +461,22 @@ var comprTest2 =
       };
 
 
+// loop for updated comprehension test - one token trial version
+  var loopComprT1Updated = {
+    timeline: [failedTestNot, instruction_messageAlternateVersionLevelOne, comprTest1Updated],
+    loop_function: function(data){
+
+          // get the data from the previous trial,
+         var lasttrialdata = jsPsych.data.getLastTrialData();
+          if(lasttrialdata.responses == '{"Q0":"1","Q1":"5","Q2":"No","Q3":"No (I am inside the safe square)","Q4":"I got caught by the robber"}'){
+
+              return false;}
+        else{
+          return true;}
+        }
+      };
+
+
   var loopComprT2 = {
     timeline: [failedTestNot, instruction_messageLevelTwo, comprTest2],
     loop_function: function(data){
@@ -413,6 +506,20 @@ var comprTest2 =
     }
     };
 
+    // subject has to redo comprehension test until pass.  Updated version: one token trial
+  var if_comprTfailUpdated = {
+    timeline: [loopComprT1Updated],
+    conditional_function: function(){
+
+        // get the data from the previous trial,
+         var lasttrialdata = jsPsych.data.getLastTrialData();
+          if(lasttrialdata.responses == '{"Q0":"1","Q1":"5","Q2":"No","Q3":"No (I am inside the safe square)","Q4":"I got caught by the robber"}')
+
+          {return false;}
+        else{return true;}
+    }
+    };
+
 
   // subject has to redo comprehension test until pass. 
   var if_comprTfail2 = {
@@ -431,6 +538,8 @@ var comprTest2 =
 var comprehensionTestBlock1 = [comprTest1, if_comprTfail];
 var comprehensionTestBlock2 = [comprTest2, if_comprTfail2];
 
+// updated version level one - one token trial
+var comprehensionTestBlock1Updated = [comprTest1Updated, if_comprTfailUpdated];
 
 // participant feedback
 var feedbackParticipant = {
@@ -482,7 +591,7 @@ var qns = [];
   var begin_qns =
   {
   type:"text",
-  text:'<p class="instructions">We will now ask you to complete some questionnaires. Please note the options given might differ for different questionnaires.</p>' +
+  text:'<p class="instructions"> <b>Congratulations you made it through all levels!!!<BR/><BR/></b>We will now ask you to complete some questionnaires. Please note the options given might differ for different questionnaires.</p>' +
   '<p class="instructions">Please read each question carefully and answer according to the options given.</p>' +
   '<p class="instructions">Press spacebar to continue.</p>',
   data: {label: 'intruct', trialType: 'quest'},
@@ -1228,30 +1337,67 @@ var chosenTrialLvl2;
 var isRobberCaught;
 var totalRewardWon;
 
-var rewardCalculation = function() {             // function for calculating the reward of a participant
+//helper Variables Updated Version
 
-    var totalReward = 15;      // participation payment: 15$
+var nrOfTimesCaught = 0;
+var chosenIndexRounds =[];
+var collectedTokens = 0;
+var potentialLoss = 0;
+
+var rewardCalculation = function() {             // function for calculating the reward of a participantadjusted to the updated levelOne version - one token trial 
+
+    var totalReward = 10;      // participation fixed payment: 10$
     var bonus = 0;
 
-    //levelOne  -- choose a random trial among all level one's
-    var allCatchDiamonds = jsPsych.data.getTrialsOfType("AAALevelOne");  
-
-    var randomNrOne = Math.floor(Math.random() * ((allCatchDiamonds.length -1) - 0 + 1)) + 0; // election of random trial nr.
-    var isCaught = Object.values(allCatchDiamonds[randomNrOne])[6];
-    var nrWonTok = Object.values(allCatchDiamonds[randomNrOne])[4];
- 
-    chosenTrialLvl1 = randomNrOne;
-    nrWonTokensLvl1 = parseInt(nrWonTok);
+    //levelOne  -- choose 6 random trials among all level one's
+    var allCatchDiamonds = jsPsych.data.getTrialsOfType("AAALevelOne"); 
 
 
-    if(isCaught == "false"){
+  for(i = 0; i <= 5; i++){
 
-      wonToken = parseInt(nrWonTok);  // + bonus for every caught diamond default 2.5$ per nrWonTok
-      bonus += wonToken*2.5;
+    var randomNrIndex = Math.floor(Math.random() * ((allCatchDiamonds.length -1) - 0 + 1)) + 0; // election of random trial nr.
+
+    if(randomNrIndex == 0){
+
+        chosenIndexRounds.push(randomNrIndex + 1);
+       }
+
+    else{
+        chosenIndexRounds.push(randomNrIndex);
+       }
+
+    var isCaught = Object.values(allCatchDiamonds[randomNrIndex])[8];
+    var wonToken = Object.values(allCatchDiamonds[randomNrIndex])[6];
+    var potentiaLoss = Object.values(allCatchDiamonds[randomNrIndex])[1]; 
+    
+
+    if(isCaught == "false" && parseInt(wonToken) == 1){
+
+         collectedTokens += 1;
+         bonus += 2;
     }
 
+    else if(isCaught == "true"){
 
-    //levelTwoB  -- choose a random trial among all level twoB's
+      nrOfTimesCaught += 1;
+      potentialLoss += potentiaLoss;
+      bonus -= parseInt(potentiaLoss)*2;
+    }
+  };
+
+
+    if(bonus < 0){
+
+      bonus = 0;
+    };
+    
+    totalRewardWon = totalReward + bonus;
+    jsPsych.data.addProperties({earnedReward: totalRewardWon});
+    psiturk.recordUnstructuredData('bonus', bonus);  // only the bonus without participation payment, fetched by custom compute_bonus 
+ };
+
+    //levelTwoB  -- choose a random trial among all level twoB's  --> not relevant for updated version of levelOne
+   /*
     var allCatchRobber = jsPsych.data.getTrialsOfType("AAALevelTwoB");
 
     var randomNrB = Math.floor(Math.random() * ((allCatchRobber.length -1) - 0 + 1)) + 0;  // election of random trial nr.
@@ -1264,33 +1410,28 @@ var rewardCalculation = function() {             // function for calculating the
 
       bonus += 2.5;  // Bonus for level 2B for + 2.5$ if robber was caught in that round
     }
-   
+   */
 
-    totalRewardWon = totalReward + bonus;
-    jsPsych.data.addProperties({earnedReward: totalRewardWon});
-    psiturk.recordUnstructuredData('bonus', bonus);  // only the bonus without participation payment, fetched by custom compute_bonus 
-    
- };
 
 
 var rewardCalc = {
     type: 'call-function',
     func: rewardCalculation
 }
-
+  //updated to fit new version of LevelOne - one trial token
 var rewardInformation = {
 
     type: "text",
-    text: function(){ return ("<b> What follows now is the calculation of your reward!</b>  <BR/><BR/>Summed up there are 49 possible 'catch tokens' rounds from level 1 (with 45 rounds) and level 2 (with 4 rounds) as well as 12 possible 'catch the robber' rounds from level 2 only.<BR/> <BR/>" +
-        "From those rounds one '<b>catch tokens</b>' and one '<b>catch the robber</b>' round will be selected randomly.<BR/> <BR/>" + 
-          "As '<b>catch tokens</b>' round <b>"  + (chosenTrialLvl1+1) +  "</b> was randomly selected. <BR/> <BR/>In this chosen round you collected <b>" +
-         nrWonTokensLvl1 + "</b> tokens. This gives you a bonus of<b> " + (nrWonTokensLvl1*2.5) + "$</b>.<BR/> <BR/> As for 'catch the robber', round <b> " + (chosenTrialLvl2+1) + "</b> , was randomly selected.<BR/> <BR/>" +
-         "In this selected round you " + isItCaught() +
-        "<BR/> <BR/>In this way you earned a total of <b> " + totalRewardWon + "$</b> in this experiment. <BR/> <BR/> press spacebar to continue ")},
+    text: function(){ return ("<b> What follows now is the calculation of your reward!</b>  <BR/><BR/>Summed up there are " + randomizedLevelOneSingleTokenTrialFirstPart.length*2 + " possible 'catch token' rounds. <BR/> <BR/>" +
+        "From those rounds six '<b>catch token</b>' rounds will be selected randomly.<BR/> <BR/>" + 
+          "'<b>Catch token</b>' round Nr. <b>"  + (chosenIndexRounds.join(", ")) +  "</b> were randomly selected. <BR/> <BR/>In those chosen rounds you collected <b>" +
+         collectedTokens + "</b> times a token. This gives you a bonus of <b> " + (collectedTokens*2) + "$</b>. <BR/> <BR/> In the selected rounds you were caught by the robber <b>" + nrOfTimesCaught + "</b> times and lost in that way <b>" + potentialLoss + "</b> tokens." +
+        "<BR/> <BR/>Resulting in a total earning of <b> " + totalRewardWon + "$</b> in this experiment. <BR/> <BR/> press spacebar to continue ")},
       on_finish: function(){
         jsPsych.setProgressBar(0.02); 
     }
       };
+
 
 // heleper function to determine whether the robber was caught or not
 var isItCaught = function(){
@@ -1305,30 +1446,30 @@ var isItCaught = function(){
     }
 };
 
-
-nrOfTimesOutFocus = 0;
-function checkPageFocus() { // checks whether the participant has experiment in focus / if he alt+tabs away /or anything out of focus an alert is given
-  
-  let body = document.querySelector('body');
-
-  if (document.hasFocus()) {
-    
-    //as long as in focus do nothing
-  }
-  else {
-    nrOfTimesOutFocus += 1;
-    alert('Please stay focused on the experiment and do not switch window or application');
-  }
-};
-
-
+ 
 
 //MAIN --> defining experiment structure
+  
+  //timeline updated version levleOne - one trial token welcome_message, entrySurvey_block, instruction_messageAlternateVersionLevelOne
 
-                
-var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne];
+   
+        timeline = [welcome_message, entrySurvey_block, instruction_messageAlternateVersionLevelOne];
+        timeline = timeline.concat(comprehensionTestBlock1Updated);
+        timeline.push(level1Start);
 
-    
+        timeline = timeline.concat(randomizedLevelOneSingleTokenTrialFirstPart);
+        timeline.push(break_messageLvlOneA);
+        timeline = timeline.concat(randomizedLevelOneSingleTokenTrialSecondPart);
+
+        timeline = timeline.concat(questionnaires);
+        timeline.push(rewardCalc);
+        timeline.push(rewardInformation);
+        timeline.push(feedbackParticipant);
+
+
+/*  timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne];
+
+
      timeline = timeline.concat(comprehensionTestBlock1);
      timeline.push(level1Start);
      timeline = timeline.concat(levelOneListA);
@@ -1350,36 +1491,37 @@ var timeline = [welcome_message, entrySurvey_block,instruction_messageLevelOne];
      timeline.push(rewardCalc);
      timeline.push(rewardInformation);
      timeline.push(feedbackParticipant);
-     
+  */
 
 jsPsych.init({
     display_element: $('#jspsych-target'),
     timeline: timeline,
-    fullscreen: true,       // fullscreen setting 
+    fullscreen: false,       // fullscreen setting 
     show_progress_bar: true,
     auto_update_progress_bar: false, 
 
     // record data to psiTurk after each trial
     on_data_update: function(data) {
         psiturk.recordTrialData(data);
-        setInterval(checkPageFocus, 300);
+
     },
 
     on_finish: function() {
-
-    
-    jsPsych.data.addProperties({NrOfTimesOutOfFocus: nrOfTimesOutFocus});
 
     //save data
     psiturk.saveData({
 
     success: function() { 
-       //function to run if the data is saved
+      // function to run if the data is saved
+
+      //debug purpose display data after trial
+      jsPsych.data.displayData('csv');
 
        psiturk.computeBonus('compute_bonus', function() { 
 
-           psiturk.completeHIT(); }); // when finished saving compute bonus...quit
- 
+            psiturk.completeHIT(); }); // when finished saving compute bonus...quit
+
+     
    },
     error: function() { 
       // function to run if there was an error

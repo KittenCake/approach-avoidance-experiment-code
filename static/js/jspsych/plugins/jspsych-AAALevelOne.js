@@ -34,6 +34,7 @@ plugin.trial = function(display_element, trial){        // for every trial shoul
   trial.numberOfTokkens = 1; // one token per trial policy
   trial.tokkenCount = 0;
  
+
   trial.robberActive = false;                           // determines wether robber is currently active or not
 
   trial.playerIsOut = false;
@@ -89,6 +90,9 @@ for (i = 0; i < trial.numberOfTokkens; i++) {
 
   };
 
+
+  console.log(trial.appearTokkenTime);
+  console.log(trial.dissapearTokkenTime);
 
 // robber settings
 
@@ -662,6 +666,7 @@ if (trial.tokkenCount == 1 && trial.finishNormal == true){
  
            "robberTrackColLamDict": JSON.stringify(trial.robberTrackColLamDict),
            "potentialTokenLoss": JSON.stringify(trial.potentialLoss),
+           "TokenLost": JSON.stringify(0),
            "robberTrackArr": JSON.stringify(trial.robberTrackArr),
            "tokkenTrackDict": JSON.stringify(trial.tokkenTrackDict),
            "playerTrackDict": JSON.stringify(trial.playerTrackDict),
