@@ -20,7 +20,7 @@ var welcome_message = {
 
     show_clickable_nav: true,
      on_finish: function(){
-        jsPsych.setProgressBar(0.01); 
+        jsPsych.setProgressBar(0.006); 
     }
 };
 
@@ -32,7 +32,7 @@ var entrySurvey_block = {        // unique id for participants can be created wh
     required: [true,true],
     horizontal: [false, false],
     on_finish: function(){
-        jsPsych.setProgressBar(0.01); 
+        jsPsych.setProgressBar(0.006); 
     }
 };
 
@@ -97,7 +97,7 @@ var instruction_messageAlternateVersionLevelOne = {
 
     show_clickable_nav: true,
     on_finish: function(){
-        jsPsych.setProgressBar(0.02); 
+        jsPsych.setProgressBar(0.006); 
     } // experiment instructions 
 };
 
@@ -131,7 +131,7 @@ var level1Start = {
   text: "This part of the experiment has 144 rounds and takes around 20 mins to finish with 1 break.<BR/>  <BR/> press spacebar to start",
   timing_post_trial: 2000,
   on_finish: function(){
-        jsPsych.setProgressBar(0.01); 
+        jsPsych.setProgressBar(0.006); 
     }
 };
 
@@ -263,7 +263,7 @@ var levelOneA = {
   robberColor: robberColor[0],
   potentialLoss: i,
     on_finish: function(){
-        jsPsych.setProgressBar(0.004); 
+        jsPsych.setProgressBar(0.006); 
     }
 };
 
@@ -274,7 +274,7 @@ var levelOneB = {
   robberColor: robberColor[1],
   potentialLoss: i,
    on_finish: function(){
-        jsPsych.setProgressBar(0.004); 
+        jsPsych.setProgressBar(0.006); 
     }
 };
 
@@ -285,7 +285,7 @@ var levelOneC = {
   robberColor: robberColor[2],
   potentialLoss: i,
    on_finish: function(){
-        jsPsych.setProgressBar(0.004); 
+        jsPsych.setProgressBar(0.006); 
     }
   
 };
@@ -416,7 +416,7 @@ var comprTest1Updated =
     required: [true, true, true, true, true],
     data:{label: 'compr1', trialType: 'quest'},
     on_finish: function(){
-        jsPsych.setProgressBar(0.01); 
+        jsPsych.setProgressBar(0.006); 
     }};
 
 
@@ -548,7 +548,7 @@ var feedbackParticipant = {
   columns: [90],
   questions: ["(feedback is optional) <BR/> <BR/> In order to keep track of possible bugs and to improve the experience, <BR/> we kindly ask you to give us feedback. Feel free to share your opinion with us on our experiment.<BR/>"],
     on_finish: function(){
-        jsPsych.setProgressBar(0.01); 
+        jsPsych.setProgressBar(0.006); 
     }
 };
 
@@ -645,7 +645,7 @@ var bis_scale = ["Do not agree at all",  "Agree slightly", "Agree a lot",  "Agre
     data:{label: 'bis', trialType: 'quest'},
       on_finish: function(){
 
-        jsPsych.setProgressBar(0.04); 
+        jsPsych.setProgressBar(0.006); 
     }
     };
 
@@ -689,7 +689,7 @@ var ocir_qn = ['1) I have saved up so many things that they get in the way. ',
     data:{label: 'ocir', trialType: 'quest'},
       on_finish: function(){
 
-        jsPsych.setProgressBar(0.03); 
+        jsPsych.setProgressBar(0.006); 
     }
     };
 
@@ -778,7 +778,7 @@ var schizo_scale = ["No", "Yes"];
             }
         }
 
-        jsPsych.setProgressBar(0.04); 
+        jsPsych.setProgressBar(0.006); 
     }
     };
 
@@ -819,7 +819,7 @@ var zung_scale = ["A little of the time",  "Some of the time", "Good part of the
     preamble : ['<strong>Please read each statement and decide HOW MUCH of the time the statement describes how you have been feeling during the PAST SEVERAL DAYS.</strong>'],
     data:{label: 'depress', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.03); 
+        jsPsych.setProgressBar(0.006); 
     }
     };
 
@@ -891,7 +891,7 @@ var lebsocial_scale2 = [ "Never (0%)" ,"Occasionally (1—33%)", "Often (33—67
     preamble: ['<strong>Read each bolded statement carefully and answer two questions about that statement. The first question asks how ANXIOUS or FEARFUL you feel in that situation. The second question asks how often you AVOID that situation. Please base your ratings on the way that the situations have affected you in the LAST WEEK.</strong>'],
     data:{label: 'social', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.03); 
+        jsPsych.setProgressBar(0.006); 
     }
     };
 
@@ -954,7 +954,7 @@ var iq_scale10 = ["A" ,"B", "C", "D" , "E", "F","G","H"];
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     data:{label: 'iq', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.18); 
+        jsPsych.setProgressBar(0.006); 
     }
     };
     
@@ -985,7 +985,7 @@ var alcohol_scale4 = [ "No","Yes, but not in the last year","Yes, during the las
     preamble: ['<strong>Now we are going to ask you some questions about your use of alcoholic beverages during the past year. Please try to be as honest and as accurate as you can be.</strong>'],
     data:{label: 'alcohol', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.02); 
+        jsPsych.setProgressBar(0.006); 
     }
     };
     
@@ -1019,7 +1019,7 @@ var apathy_scale = [ "Not at all characteristic","Slightly characteristic","Some
     preamble: ['<strong>For each question, choose the answer that best describes your thoughts, feelings, and actions during the past 4 weeks.</strong>'],
     data:{label: 'apathy', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.02);
+        jsPsych.setProgressBar(0.006);
     }
     };
 
@@ -1063,7 +1063,7 @@ var eat_scale = [ "Always","Usually","Often","Sometimes","Rarely","Never"];
     data:{label: 'eat', trialType: 'quest'},
       on_finish: function(){
 
-        jsPsych.setProgressBar(0.04); 
+        jsPsych.setProgressBar(0.006); 
     }
     };
     
@@ -1101,7 +1101,7 @@ var anxiety2_scale = [ "Almost never","Sometimes","Often","Almost always"];
     preamble: ['<strong>Read each statement and select the appropriate response to indicate how you generally feel. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
     data:{label: 'anxiety-Y2', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.03); 
+        jsPsych.setProgressBar(0.006); 
     }
     };
 
@@ -1137,7 +1137,7 @@ var anxiety1_scale = [ "Not at all","Somewhat","Moderately so","Very much so"];
     preamble: ['<strong>Read each statement and select the appropriate response to indicate how you feel right now, that is, at this very moment. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
     data:{label: 'anxiety-Y1', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.02); 
+        jsPsych.setProgressBar(0.006); 
     }
     };  
 
@@ -1222,7 +1222,7 @@ var anxietyTMAS_scale = [ "True","False"];
             }
         }
 
-        jsPsych.setProgressBar(0.05); 
+        jsPsych.setProgressBar(0.06); 
     }
     };  
 
@@ -1245,7 +1245,7 @@ var daringnessCADS_scale = [ "Not at all","Just a little","Pretty much/pretty of
     preamble: ['<strong>When you answer these questions, please think about the last 12 months and tick the box that you feel best describes you.</strong>'],
     data:{label: 'daringness-CADS', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.03);
+        jsPsych.setProgressBar(0.006);
     }
     };  
     
@@ -1428,7 +1428,7 @@ var rewardInformation = {
          collectedTokens + "</b> times a token. This gives you a bonus of <b> " + (collectedTokens*2) + "$</b>. <BR/> <BR/> In the selected rounds you were caught by the robber <b>" + nrOfTimesCaught + "</b> times and lost in that way <b>" + potentialLoss + "</b> tokens." +
         "<BR/> <BR/>Resulting in a total earning of <b> " + totalRewardWon + "$</b> in this experiment. <BR/> <BR/> press spacebar to continue ")},
       on_finish: function(){
-        jsPsych.setProgressBar(0.02); 
+        jsPsych.setProgressBar(0.006); 
     }
       };
 
@@ -1515,7 +1515,7 @@ jsPsych.init({
       // function to run if the data is saved
 
       //debug purpose display data after trial
-      jsPsych.data.displayData('csv');
+      //jsPsych.data.displayData('csv');
 
        psiturk.computeBonus('compute_bonus', function() { 
 
