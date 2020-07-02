@@ -1496,7 +1496,7 @@ var isItCaught = function(){
 jsPsych.init({
     display_element: $('#jspsych-target'),
     timeline: timeline,
-    fullscreen: false,       // fullscreen setting 
+    fullscreen: true,       // fullscreen setting 
     show_progress_bar: true,
     auto_update_progress_bar: false, 
 
