@@ -235,11 +235,13 @@ var break_messageLvlTwo = {
     }
 };
 
-var preloadImages = {
-
-  type: "preloadImages"
-
-};
+// list of all images in the experiment that need to be preloaded
+var preloadImages = ['static/images/azureFrame.jpeg','static/images/purpleFrame.jpeg','static/images/yellowFrame.jpeg', 
+  'static/images/potentialLossToken.jpeg','static/images/TwoLostTokens.jpeg', 'static/images/ThreeLostTokens.jpeg',
+  'static/images/FourLostTokens.jpeg','static/images/FiveLostTokens.jpeg','static/images/imageActiveLeftRobber.jpeg',
+  'static/images/imageActiveRightRobber.jpeg','static/images/imagePlayer.jpeg','static/images/imageTokken.jpeg','static/images/instructionsAlternateLevelOne1.jpeg',
+  'static/images/instructionsAlternateLevelOne2.jpeg','static/images/instructionsAlternateLevelOne3.jpeg','static/images/instructionsAlternateLevelOne4.jpeg','static/images/instructionsAlternateLevelOne5.jpeg',
+  'static/images/instructionsAlternateLevelOne6.jpeg','static/images/potentialLossComprehensionTest.jpeg','static/images/potentialLossGrid.jpeg'];
 
 //Randomization of robber color & lambda  -> In level 1 & 2
 var robberLambda = [0,1,2];
@@ -263,7 +265,7 @@ var levelOneA = {
   robberColor: robberColor[0],
   potentialLoss: i,
     on_finish: function(){
-        jsPsych.setProgressBar(0.006); 
+        jsPsych.setProgressBar(0.003); 
     }
 };
 
@@ -274,7 +276,7 @@ var levelOneB = {
   robberColor: robberColor[1],
   potentialLoss: i,
    on_finish: function(){
-        jsPsych.setProgressBar(0.006); 
+        jsPsych.setProgressBar(0.003); 
     }
 };
 
@@ -285,7 +287,7 @@ var levelOneC = {
   robberColor: robberColor[2],
   potentialLoss: i,
    on_finish: function(){
-        jsPsych.setProgressBar(0.006); 
+        jsPsych.setProgressBar(0.003); 
     }
   
 };
@@ -559,7 +561,7 @@ var feedbackParticipant = {
 var countFailedScreener = 0;
 
 
-// pre-finish function (if participant failed 3 screeners ask to return the hit - leads to end screen)
+// pre-finish function (if participant failed 1 screener ask to return the hit - leads to end screen)
   function failedScreeners (){
 
       psiturk.saveData({
@@ -645,7 +647,7 @@ var bis_scale = ["Do not agree at all",  "Agree slightly", "Agree a lot",  "Agre
     data:{label: 'bis', trialType: 'quest'},
       on_finish: function(){
 
-        jsPsych.setProgressBar(0.006); 
+        jsPsych.setProgressBar(0.04); 
     }
     };
 
@@ -689,7 +691,7 @@ var ocir_qn = ['1) I have saved up so many things that they get in the way. ',
     data:{label: 'ocir', trialType: 'quest'},
       on_finish: function(){
 
-        jsPsych.setProgressBar(0.006); 
+        jsPsych.setProgressBar(0.04); 
     }
     };
 
@@ -773,12 +775,12 @@ var schizo_scale = ["No", "Yes"];
 
             if(countFailedScreener >= 1){
 
-              //run pre-exit
-              failedScreeners();
+              //run pre-exit --> deactivated for pilot run
+             // failedScreeners();
             }
         }
 
-        jsPsych.setProgressBar(0.006); 
+        jsPsych.setProgressBar(0.04); 
     }
     };
 
@@ -819,7 +821,7 @@ var zung_scale = ["A little of the time",  "Some of the time", "Good part of the
     preamble : ['<strong>Please read each statement and decide HOW MUCH of the time the statement describes how you have been feeling during the PAST SEVERAL DAYS.</strong>'],
     data:{label: 'depress', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.006); 
+        jsPsych.setProgressBar(0.04); 
     }
     };
 
@@ -891,7 +893,7 @@ var lebsocial_scale2 = [ "Never (0%)" ,"Occasionally (1—33%)", "Often (33—67
     preamble: ['<strong>Read each bolded statement carefully and answer two questions about that statement. The first question asks how ANXIOUS or FEARFUL you feel in that situation. The second question asks how often you AVOID that situation. Please base your ratings on the way that the situations have affected you in the LAST WEEK.</strong>'],
     data:{label: 'social', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.006); 
+        jsPsych.setProgressBar(0.04); 
     }
     };
 
@@ -954,7 +956,7 @@ var iq_scale10 = ["A" ,"B", "C", "D" , "E", "F","G","H"];
     required: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
     data:{label: 'iq', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.006); 
+        jsPsych.setProgressBar(0.04); 
     }
     };
     
@@ -985,7 +987,7 @@ var alcohol_scale4 = [ "No","Yes, but not in the last year","Yes, during the las
     preamble: ['<strong>Now we are going to ask you some questions about your use of alcoholic beverages during the past year. Please try to be as honest and as accurate as you can be.</strong>'],
     data:{label: 'alcohol', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.006); 
+        jsPsych.setProgressBar(0.04); 
     }
     };
     
@@ -1019,7 +1021,7 @@ var apathy_scale = [ "Not at all characteristic","Slightly characteristic","Some
     preamble: ['<strong>For each question, choose the answer that best describes your thoughts, feelings, and actions during the past 4 weeks.</strong>'],
     data:{label: 'apathy', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.006);
+        jsPsych.setProgressBar(0.04);
     }
     };
 
@@ -1063,7 +1065,7 @@ var eat_scale = [ "Always","Usually","Often","Sometimes","Rarely","Never"];
     data:{label: 'eat', trialType: 'quest'},
       on_finish: function(){
 
-        jsPsych.setProgressBar(0.006); 
+        jsPsych.setProgressBar(0.04); 
     }
     };
     
@@ -1101,7 +1103,7 @@ var anxiety2_scale = [ "Almost never","Sometimes","Often","Almost always"];
     preamble: ['<strong>Read each statement and select the appropriate response to indicate how you generally feel. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
     data:{label: 'anxiety-Y2', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.006); 
+        jsPsych.setProgressBar(0.04); 
     }
     };
 
@@ -1137,7 +1139,7 @@ var anxiety1_scale = [ "Not at all","Somewhat","Moderately so","Very much so"];
     preamble: ['<strong>Read each statement and select the appropriate response to indicate how you feel right now, that is, at this very moment. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best.</strong>'],
     data:{label: 'anxiety-Y1', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.006); 
+        jsPsych.setProgressBar(0.04); 
     }
     };  
 
@@ -1216,13 +1218,13 @@ var anxietyTMAS_scale = [ "True","False"];
 
             if(countFailedScreener >= 1){
 
-              //run pre-exit
+              //run pre-exit --> deactivated for pilot run
             
-                failedScreeners();
+               // failedScreeners();
             }
         }
 
-        jsPsych.setProgressBar(0.06); 
+        jsPsych.setProgressBar(0.04); 
     }
     };  
 
@@ -1245,7 +1247,7 @@ var daringnessCADS_scale = [ "Not at all","Just a little","Pretty much/pretty of
     preamble: ['<strong>When you answer these questions, please think about the last 12 months and tick the box that you feel best describes you.</strong>'],
     data:{label: 'daringness-CADS', trialType: 'quest'},
       on_finish: function(){
-        jsPsych.setProgressBar(0.006);
+        jsPsych.setProgressBar(0.04);
     }
     };  
     
@@ -1493,11 +1495,13 @@ var isItCaught = function(){
      timeline.push(feedbackParticipant);
   */
 
+
 jsPsych.init({
     display_element: $('#jspsych-target'),
     timeline: timeline,
     fullscreen: true,       // fullscreen setting 
     show_progress_bar: true,
+    preload_images: preloadImages,
     auto_update_progress_bar: false, 
 
     // record data to psiTurk after each trial
